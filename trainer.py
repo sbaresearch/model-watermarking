@@ -12,7 +12,7 @@ from helpers.pytorchtools import EarlyStopping
 
 
 def train(epoch, net, criterion, optimizer, train_loader, device, avg_train_losses, avg_valid_losses,
-          valid_loader=False, wmloader=False, tune_all=True, method=None, args_dict=None):
+          valid_loader=False, wmloader=False, tune_all=True):
     print('\nEpoch: %d' % epoch)
     net.train()
 
@@ -52,9 +52,6 @@ def train(epoch, net, criterion, optimizer, train_loader, device, avg_train_loss
 
         # add wmimages and targets
         if wmloader:
-            #adv_idx = (wm_idx + batch_idx) % len(wminputs)
-            #adv_inputs = wminputs[adv_idx]
-            #adv_targets = wmtargets[adv_idx]
             inputs = torch.cat([inputs, wminputs[(wm_idx + batch_idx) % len(wminputs)]], dim=0)
             targets = torch.cat([targets, wmtargets[(wm_idx + batch_idx) % len(wminputs)]], dim=0)
 
@@ -65,37 +62,6 @@ def train(epoch, net, criterion, optimizer, train_loader, device, avg_train_loss
 
         # calculate the loss
         loss = criterion(outputs, targets)
-
-        # should be probably also computed batch-wise...
-        if method == 'Blackmarks':
-            trigger_set = args_dict['trigger_set']
-            decode_predictions = args_dict['decode_predictions']
-            f = args_dict['f']
-            lmbd = args_dict['lmbd']
-            sig_extended = args_dict['sig_extended']
-            # trigger_set is saved as list of tuples. extract inputs
-
-            #adv_inputs = [img for (img, lbl) in trigger_set] # todo weg
-            #adv_inputs = torch.stack(adv_inputs) # todo weg
-
-            wmloader_noshuffle = torch.utils.data.DataLoader(trigger_set, batch_size=16, num_workers=0, shuffle=False, drop_last=False)
-
-            loss_wm = 0
-            for adv_idx, (adv_inputs, adv_targets) in enumerate(wmloader_noshuffle):
-                adv_inputs, adv_targets = adv_inputs.to(device), adv_targets.to(device)
-                adv_outputs = net(adv_inputs)
-
-                decoded_sig = decode_predictions(adv_outputs, f)
-
-                # compute hamming distance between decoded sig and sig
-                #loss_wm_batch = len([i for i in filter(lambda x: x[0] != x[1], zip(sig_extended, decoded_sig))])
-                # todo: lass nochmal laufen damit:
-                loss_wm_batch = len([i for i in filter(lambda x: x[0] != x[1], zip(sig_extended[adv_idx*16:(adv_idx+1)*16], decoded_sig))])
-
-                loss_wm = loss_wm + loss_wm_batch
-
-            # regularized loss
-            loss = loss + lmbd * loss_wm
 
         # backward pass: compute gradient of the loss with respect to model parameters
         loss.backward(retain_graph=True)
@@ -287,7 +253,7 @@ def train_on_wms(epochs, device, net, optimizer, criterion, scheduler, wm_loader
 
 def train_on_augmented(epochs, device, net, optimizer, criterion, scheduler, patience, train_loader, test_loader,
                        valid_loader,
-                       wm_loader, save_dir, save_model, history, method=None, args_dict=None):
+                       wm_loader, save_dir, save_model, history):
     logging.info("Training on dataset augmented with trigger set.")
 
     avg_train_losses = []
@@ -305,8 +271,7 @@ def train_on_augmented(epochs, device, net, optimizer, criterion, scheduler, pat
         avg_train_losses, avg_valid_losses, train_acc, valid_acc = train(epoch, net, criterion, optimizer,
                                                                          train_loader, device,
                                                                          avg_train_losses, avg_valid_losses,
-                                                                         valid_loader, wm_loader, method=method,
-                                                                         args_dict=args_dict)
+                                                                         valid_loader, wm_loader)
 
         logging.info("Testing dataset.")
         test_acc = test(net, criterion, test_loader, device)

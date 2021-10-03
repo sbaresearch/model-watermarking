@@ -70,7 +70,7 @@ parser.add_argument('--patience', default=20, help='early stopping patience (def
 # cuda
 parser.add_argument('--cuda', default=None, help='set cuda (e.g. cuda:0)')
 
-# for testing reasons # TODO remove later
+# for testing with a smaller subset
 parser.add_argument('--test_quot', default=None, type=int,
                     help='the quotient of data subset (for testing reasons; default: None)')
 
@@ -118,10 +118,10 @@ try:
     torch.backends.cudnn.deterministic = True
 
     # load train, valid and test set
-    valid_size = 0.1  # todo valid_size = 0.1 - https://arxiv.org/abs/1512.03385 macht für resnet zb 0.1
+    valid_size = 0.1  # https://arxiv.org/abs/1512.03385 uses 0.1 for resnet
     transform_train, transform_test = get_data_transforms(args.dataset)
     train_set, test_set, valid_set = get_dataset(args.dataset, train_db_path, test_db_path, transform_train, transform_test,
-                                                 valid_size, testquot=args.test_quot)  # TODO: remove test_quot
+                                                 valid_size, testquot=args.test_quot)
     train_loader, test_loader, valid_loader = get_dataloader(train_set, test_set, args.batch_size, valid_set, shuffle=True)
 
     # set up loss
