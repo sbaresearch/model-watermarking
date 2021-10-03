@@ -1,0 +1,57 @@
+\begin{table*}[t]
+\centering
+% No punctuation in last sentence + caption should be set as an inverted pyramid. see IEEE editorial style manual: http://journals.ieeeauthorcenter.ieee.org/wp-content/uploads/sites/7/IEEE-Editorial-Style-Manual_081920.pdf
+\caption{Requirements for Watermarking techniques. The notation is not consistent throughout the papers, but the terms in the left column are the most prominent ones. These requirements mostly apply also to Fingerprinting methods}
+%  \begin{adjustbox}{width=1.0\textwidth,center=\textwidth}
+
+\rowcolors{2}{gray!15}{white}
+
+\begin{tabular}{|p{0.15\textwidth}|p{0.4\textwidth}|p{0.4\textwidth}|}
+\rowcolor{gray!15}
+\hline
+\textbf{Property}               & \textbf{Description}                                                                                              & \textbf{Other terms used in papers}                        \\ \hline
+%
+Effectiveness                   & The model owner should be able to prove ownerhsip anytime and multiple times if needed                            & Authentication \cite{li_piracy_2020}, Functionality \cite{li_how_2019}                              \\ \hline
+%
+Fidelity                        & The accuracy of the model should not be degraded after embedding the watermark                                    & Funcionality-preserving \cite{li_piracy_2020, wang_robust_2020, adi_turning_2018}, Loyalty \cite{merrer_adversarial_2019}, Utility \cite{szyller_dawn_2020}
+\scriptsize{(Image WM: Transparency \cite{potdar_survey_2005}; Relational Data WM: Usability \cite{kamran_comprehensive_2018})}                \\ \hline
+%
+Robustness                      & The embedded watermark should resist a designated class of transformations                                        & Unremovability \cite{adi_turning_2018, szyller_dawn_2020}                                            \\ \hline
+%
+Security                        & The watermark should be secure against brute-force or specifically crafted evasion attacks                        & Secrecy \cite{skripniuk_black-box_2020}, Unforgeability \cite{adi_turning_2018, wang_robust_2020}                                    \\ \hline
+%
+Legality                        & An adversary cannot produce a watermark for a model that was already watermarked by the model owner               & Ownership piracy resilient \cite{adi_turning_2018, wang_robust_2020}, Non-ownership piracy \cite{szyller_dawn_2020}           \\ \hline
+%
+Integrity                       & The watermark verification process should have a negligible false positive rate                                   & Low false positive rate \cite{guo_evolutionary_2019, guo_watermarking_2018}, Non-trivial ownership \cite{li_piracy_2020, adi_turning_2018, wang_robust_2020}, Uniqueness \cite{quan_watermarking_2020} \\ \hline
+%
+Reliability                     & The watermark verification process should have a negligible false negative rate                                   & Credibility \cite{chen_blackmarks_2019}                                                \\ \hline
+%
+Efficiency                      & The watermarking embedding and verification process should be fast                                                &                                                            \\ \hline
+%
+Capacity                        & The watermarking scheme should be capable of embedding a large amount of information                              & Payload \cite{guo_watermarking_2018}                                                    \\ \hline
+%
+
+
+% \hline
+% \textbf{Property}     & \textbf{Description}                                                                                    & \textbf{Other terms used in papers}                        \\ \hline
+% Fidelity              & The accuracy of the model should not be degraded after embedding the watermark                          & Funcionality-preserving \cite{li_piracy_2020, wang_robust_2020, adi_turning_2018}, Loyalty \cite{merrer_adversarial_2019}, Utility \cite{szyller_dawn_2020}
+% \scriptsize{(Image WM: Transparency \cite{potdar_survey_2005}; Relational Data WM: Usability \cite{agostino_cortesi_watermarking_2010})}       \\ \hline
+% Robustness            & The embedded watermark should resist a designated class of transformations                        & Feasibility \cite{li_how_2019}                                      \\ \hline
+% Non-trivial ownership & An adversary should not be able to claim ownership of the watermarked model without knowing the watermark        &                                                  \\ \hline
+% Legality              & An adversary cannot produce a watermark for a model that was already watermarked by the model owner                        & Ownership piracy resilient \cite{adi_turning_2018}, non-ownership piracy \cite{szyller_dawn_2020} \\ \hline
+% Reliability           & The watermark verification process should have a negligible false negative rate                         & Credibility \cite{chen_blackmarks_2019}                               \\ \hline
+% Integrity             & The watermark verification process should have a negligible false positive rate                         & Low false positive rate \cite{guo_evolutionary_2019, guo_watermarking_2018}  \\ \hline
+% Capacity              & The watermarking scheme should be capable of embedding a large amount of information                  & Payload \cite{guo_watermarking_2018}                                     \\ \hline
+% Efficiency            & The watermarking embedding and verification process should be fast &                                                  \\ \hline
+% Effectiveness         & The model owner should be able to prove ownerhsip anytime and multiple times if needed                                                                  & Authentication \cite{li_piracy_2020}                                   \\ \hline
+% Security              & The watermark should be secure against brute-force or specifically crafted evasion attacks                                  & Unremovability \cite{szyller_dawn_2020, adi_turning_2018}                             \\ \hline
+
+
+\end{tabular}
+% \end{adjustbox}
+\label{tab:requirement}
+\end{table*}
+
+%TODO? Tamper-resistance?
+%Tamper resistance:  Tamper-detection watermarking was developed to check the authenticity of digital photographs.  Watermarks of  this  type  are  sensitive  to  any change of  the content data;  thus,  by  checking  the integrity  of the  watermark,  the  system  can  determine whether or not the content has the ever been modified or replaced
+ 

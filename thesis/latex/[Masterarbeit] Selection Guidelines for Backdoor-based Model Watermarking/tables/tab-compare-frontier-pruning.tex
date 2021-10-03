@@ -1,0 +1,28 @@
+
+\begin{table}
+\small
+\centering
+\caption{Pruning results from Merrer et al. (\cite{merrer_adversarial_2019}, Table 2), and our results. The grey cells indicate a non-plausible pruning attack. For a plausible attack and watermark accuracy above 50\% the cell is green and below it is red.}
+\label{fig:compare-results-pruning:frontier}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+\multicolumn{4}{|c|}{Merrer et al.'s results}                                                                  & \multicolumn{3}{c|}{Our results}                                          \\ \hline
+Model & Pr. rate                     & Test                           & WM                            & Model   & Test                           & WM                             \\ \hline
+CNN   & 20\%                         & -                              & -                             & LeNet-3 & 98.7\%                         & \cellcolor[HTML]{BAE5C5}100\%  \\ \hline
+      & 25\%                         & 98.7\%                         & \cellcolor[HTML]{BAE5C5}100\% &         & -                              & -                              \\ \hline
+      & 30\%                         & -                              & -                             &         & 98.7\%                         & \cellcolor[HTML]{BAE5C5}100\%  \\ \hline
+      & 50\%                         & \cellcolor[HTML]{C0C0C0}88.5\% & \cellcolor[HTML]{C0C0C0}100\% &         & 98.7\%                         & \cellcolor[HTML]{BAE5C5}100\%  \\ \hline
+      & 70\%                         & -                              & -                             &         & 98.7\%                         & \cellcolor[HTML]{BAE5C5}100\%  \\ \hline
+      & 75\%                         & \cellcolor[HTML]{C0C0C0}42.6\% & \cellcolor[HTML]{C0C0C0}0\%   &         & -                              & -                              \\ \hline
+      & 80\%                         & -                              & -                             &         & 98.7\%                         & \cellcolor[HTML]{BAE5C5}100\%  \\ \hline
+      & 90\%                         & \cellcolor[HTML]{C0C0C0}25.5\% & \cellcolor[HTML]{C0C0C0}0\%   &         & 98.2\%                         & \cellcolor[HTML]{BAE5C5}80.8\% \\ \hline
+MLP   & 20\%                         & -                              & -                             & LeNet-1 & 98.5\%                         & \cellcolor[HTML]{BAE5C5}100\%  \\ \hline
+      & 25\%                         & 97.3\%                         & \cellcolor[HTML]{BAE5C5}100\% &         & -                              & -                              \\ \hline
+      & 30\%                         & -                              & -                             &         & 98.5\%                         & \cellcolor[HTML]{BAE5C5}100\%  \\ \hline
+      & 50\%                         & 96.6\%                         & \cellcolor[HTML]{BAE5C5}100\% &         & 97.6                           & \cellcolor[HTML]{BAE5C5}85\%   \\ \hline
+      & 70\%                         & -                              & -                             &         & \cellcolor[HTML]{C0C0C0}87.7\% & \cellcolor[HTML]{C0C0C0}55.8\% \\ \hline
+      & 75\%                         & 95.3\%                         & \cellcolor[HTML]{FFCCC9}7.7\% &         & -                              & -                              \\ \hline
+      & 80\%                         & -                              & -                             &         & \cellcolor[HTML]{C0C0C0}80.7\% & \cellcolor[HTML]{C0C0C0}43.3\% \\ \hline
+      & 90\%                         & \cellcolor[HTML]{C0C0C0}15.7\% & \cellcolor[HTML]{C0C0C0}0\%   &         & \cellcolor[HTML]{C0C0C0}39.8\% & \cellcolor[HTML]{C0C0C0}28.3\% \\ \hline
+\end{tabular}
+\end{table}

@@ -1,0 +1,91 @@
+\chapter{Conclusions and future work}
+\label{ch:conclusions}
+
+%\red{Summarise and address research questions (2-3 pages).}
+
+In this thesis, we systematised findings on IP protection (IPP) in machine learning (ML). We developed a comprehensive threat model for IP in ML, and categorised attacks and defences within a unified and consolidated taxonomy.
+
+The focus of this thesis was then an in-depth analysis of backdoor-based watermarking approaches for DNNs for image classification. We defined a common study setting, implemented eight methods, and trained 191 models. The methods were analysed regarding effectiveness, fidelity and robustness based on several experiments with well-known Deep Learning (DL) architectures on widely used benchmark datasets.
+
+%Concluding this thesis, 
+We address the research questions from \cref{ch:study_setting}, starting with the subquestions:
+
+\textbf{To what extend is a more complex model able to hold more watermark information (a bigger trigger set) without compromising test accuracy?}
+We tested fidelity for all watermarking methods and architectures and showed the results in \cref{fig:fidelity-perarch}. We can clearly say, at least for MNIST, a more complex model is able to hold more watermark information without compromising test accuracy, as we see on SimpleNet in \cref{fig:fidelity-simplenet_mnist} compared to the other architectures. SimpleNet is a very complex model for classifying grayscaled images (cf. \cref{tab:trainable_parameters}). But also comparing LeNet-1 and LeNet-3/5, we can see that a more complex model is less affected by a bigger trigger set. For models trained on CIFAR-10, however, we do not see a clear trend. The test accuracy difference on ResNet-18/34/50 across the trigger set sizes is more or less the same. Only perturbation based and in-distribution methods perform worse on DenseNet, which could be related to DenseNet's small size. For future work, testing even larger trigger set sizes for CIFAR-10 models could show similar results as for MNIST models, as the trigger set size 500 might be too small to be representative for such a trend.
+
+\textbf{To what extend does the trigger set size influence the effectiveness, fidelity and robustness of a watermarking method?}
+Regarding effectiveness, we could not detect any correlation between the trigger set size and effectiveness. All watermarking methods reach 100\%, or almost 100\%, watermark accuracy, except for the perturbation based method on the LeNets with the highest trigger set size and LeNet-5 with the midsize trigger set, which only have a watermark accuracy between 45\% and 65\%. However, we would have rather expected larger trigger sizes to have a positive effect on the effectiveness, as the model is trained on more data regarding the watermark. As we observe this odd behaviour only on \textit{FrontierStitching}, this could be related to the perturbation based trigger images and the chosen parameter $\epsilon$. Recall that we tested several values for $\epsilon$ and the value that was chosen by the authors ($\epsilon=0.25$) was the only one that did not lead to $100\%$ effectiveness on our test group (all architectures trained with 100 trigger images). As perturbation based trigger images are very much dependent on the model, one should test several values for $\epsilon$ before deciding on one.
+
+%DONE: add that you would have rather expected larger sizes to have a positive effect on the effectiveness of the WM, contrary to what you see on lenet? and then explain why it makes sense what you eventually observe?
+
+Regarding fidelity, as mentioned above, only smaller models trained on MNIST are influenced by the trigger set size. 
+
+Regarding robustness against pruning, we can confirm that the trigger set size has some influence on robustness against pruning. For most of the architectures and most of the methods, a bigger trigger set size is less robust. This is something we did not expect. We would have assumed that a model watermarked with a bigger trigger set would be more robust, since the model is trained on more of these trigger images and therefore increases the weights of the neurons classifying those. However, since this is not the case, we believe that a larger trigger set size increases the weights responsible for the original task in order to still be able to classify correctly on the original task, i.e. to cope with the influence of the trigger images.
+%DONE: add why you did expect that, and why it is plausible that you were mistaken
+
+%(kopiert von comparison): the downward trend could stem from the fact that parameters responsible for the trigger images may not increase in value with the increase of trigger set size but maybe stay the same and the parameters for the original task increase in order to cope with the influence of the trigger images on the original task.
+
+For fine-tuning with a larger learning rate, no watermarking method could survive this type of attack. The models have a watermark accuracy mostly below 20\% after the fine-tuning attack with a larger learning rate. With a smaller learning rate, however, we can again say, as with pruning, that a larger trigger set size leads to a higher watermark accuracy drop. The exception of this trend is SimpleNet, where a higher trigger set size leads to more robustness against fine-tuning, which could be related to SimpleNet's high complexity compared to the classification task.
+
+\textbf{To what extend does the complexity of the model influence, the effectiveness, fidelity and robustness of the watermarking method?}
+As discussed above, we can confirm that complexity has a (positive) influence on fidelity and robustness, as we see that SimpleNet performs exceptionally well compared to the other MNIST models and also CIFAR-10 models. For CIFAR-10 models, we see that DenseNet, which is the smallest model, performs worse on fidelity compared to the other CIFAR-10 models (cf. \cref{fig:fidelity-perarch}), but only for two methods, namely \textit{FrontierStitching} and \textit{ExponentialWeighting}.
+
+With the insights and answers found in the analysis, we now address the overall research question:
+
+% overall question
+\textbf{How can we define the most fitting watermarking method depending on the ML setting?}
+It depends on the model owners requirements, regarding effectiveness, fidelity and robustness, but it seems very likely that a model owner should consider building a more complex model than needed for the original task, in order to get the best results for watermarking, as we have seen it on SimpleNet.
+
+% Comments on watermarking methods and guidelines for selection:
+%Regarding the different watermarking methods, unfortunately, we cannot nominate a "winner" in this thesis, as the methods performed similarly well on fidelity, but totally different on robustness.
+
+Comparing the different watermarking methods, we now summarise the findings on the performance regarding effectiveness, fidelity and robustness against pruning and fine-tuning:
+
+\begin{itemize}
+    \item \textbf{Effectiveness:} We cannot make any recommendation based on the complexity of a model, as almost all models reach 100\% watermark accuracy after watermark embedding (cf. \cref{sec:eval-effectiveness}). Only \textit{FrontierStitching} fails on some models for MNIST.
+    \item \textbf{Fidelity:} All models, except of \textit{ExponentialWeighting} on DenseNet and LeNet-1 and \textit{FrontierStitching} on DenseNet, did pass the fidelity requirement, i.e. the test accuracy drops not more than around 1\% of the benchmark test accuracy (cf. \cref{sec:eval-fidelity}).
+    \item \textbf{Robustness against pruning:} The OOD methods, \textit{WeaknessIntoStrength} and \textit{ProtectingIP-OOD}, perform worst and the methods \textit{ProtectingIP-pattern}, \textit{ProtectingIP-noise} and \textit{ExponentialWeighting} perform best (cf. \cref{sec:eval-robustness-pruning}). \textit{PiracyResistant} resists a pruning attack exceptionally well on ResNet-34, SimpleNet and LeNet-3/5.
+    \item \textbf{Robustness against fine-tuning:} The best performing method over all architectures is \textit{ExponentialWeighting} and \textit{WMEmbeddedSystems}, especially with a trigger set size of 100/120 (cf. \cref{sec:eval-robustness-finetuning}). The best robustness against pruning for MNIST models did reach \textit{PiracyResistant} with 100\% watermark accuracy after the attack.
+\end{itemize}
+
+% TODO: what about efficiency?
+
+Depending on the model owner's requirements, one could now choose a fitting watermarking method based on this analysis' summary. Furthermore, we would like to point out three important differences: the time of embedding, the overhead regarding the implementation and the efficiency. As we saw in \cref{sec:compare-results:weakness}, \textit{WeaknessIntoStrength} performed better when the watermark was embedded from scratch and we believe this holds true also for the other methods. All of the methods use embedding from scratch, except of \textit{FrontierStitching}, for which the watermark generation relies on an already trained model to generate the fitting adversarial examples used as trigger images, and \textit{ExponentialWeighting}, which first has to learn the original task and then, as a second step, gets the watermarks embedded.
+
+Regarding the implementation and training overhead, a simple pattern based or noise based method such as \textit{ProtectingIP-pattern} or \textit{ProtectingIP-noise} would be the simplest method to implement, as it does not utilise any further security measures and the watermark generation is straightforward. More advanced methods would be \textit{WMEmbeddedSystems} or \textit{PiracyResistant}, which use a unique signature for the watermark generation. For \textit{ExponentialWeighting} the layers of the model need to be changed, as this method applies a special transformation on the weights. Watermarking with \textit{FrontierStitching} likely requires extra effort for experiments before choosing the best value for the parameter $\epsilon$. Also, the OOD methods \textit{WeaknessIntoStrength} and \textit{ProtectingIP-OOD} need another set of data which could lead to additional effort when searching for and preparing the OOD data.
+
+The most efficient watermarking methods are those that embed the watermark from scratch, since embedding and model training is done in the same step. \textit{FrontierStitching} and \textit{ExponentialWeighting} need an already trained model, and therefore are less efficient. \textit{FrontierStitching} needs even more computation, as the creation of adversarial images is quite time-consuming.
+
+For those model owners that are interested in fingerprinting, we believe that the most fitting methods would be \textit{ProtectingIP-pattern}, \textit{WMEmbeddedSystems} and \textit{PiracyResistant}, as the watermark generation can be easily customised, in order to embed unique watermarks for multiple users.
+
+% Discuss pretrained vs fromscratch:
+% pretrained: frontier, exponential
+% fromscratch: der rest
+
+% Discuss overhead: 
+% FrontierStitching könnte aufwändiger sein, weil man epsilons probieren müsste.
+
+% weiteres dataset in OOD.
+
+% Discuss fingerprinting
+
+% fidelity: (kopiert aus comparison)
+%All methods, except of \textit{ExponentialWeighting} and \textit{FrontierStitching}, perform similarly well, i.e. the test accuracy drops for all architectures and trigger set sizes at most for around 1\% compared to the benchmark test accuracy. The worst performing models for \textit{ExponentialWeighting} are DenseNet and LeNet-1, with a big influence of the trigger set size, e.g. LeNet-1's test accuracy drops under 0.5\% when trained with only 24 trigger images, but over 4\% when trained with 600 trigger images. For \textit{FrontierStitching}, only DenseNet performs worse compared to the others with a test accuracy drop of around 2\%.
+
+% pruning: (kopiert aus comparison)
+%From this table, we conclude that a watermark in a smaller model like LeNet-1 is less robust against pruning than in a more complex model like SimpleNet or ResNet-18. Note that we performed pruning with a stepsize of 10 percentage points and these results could change when tested with, e.g., a stepsize of 1 percentage points. We see that those models that fail on pruning are trained with an OOD or perturbation based method, and also ResNet-50 with PiracyResistant and trigger set size 20. However, those perturbation based models that seem to perform badly in this table are also those models that reach only 45-65 \% watermark accuracy after the embedding. Therefore, instead of declaring them as not robust against pruning, we rather declare them as primarily not effective.
+
+%We can see that the best performing watermarking methods, regarding pruning, are \textit{ProtectingIP-pattern}, \textit{ProtectingIP-noise} and \textit{ExponentialWeighting}, as for those the watermark accuracy after a pruning attack with the maximal plausible pruning rate stays above 50\% for all architectures and all trigger set sizes. For \textit{ExponentialWeighting}, even the worst performing model has a watermark accuracy of 83\%, but two models, DenseNet with trigger set size 500 and LeNet-1 with trigger set size 600, did not even qualify for pruning since they already fail the fidelity requirement.
+
+% finetuning: (kopiert aus comparison)
+%Concluding this section, \cref{fig:finetuning-smalllr-permethod} shows the results for fine-tuning with a smaller learning rate ($\alpha=10^{-4}$ for CIFAR-10 and $\alpha=10^{-5}$ for MNIST) for all architectures for each watermarking method. Comparing each watermarking method, we can see an upward trend in \textit{WeaknessIntoStrength} (cf. \cref{fig:finetuning-smalllr-permethod-weakness}) for almost all architectures, but we do see this also for other methods comparing trigger set size 20 and 100. A downward trend can be detected for \textit{ExponentialWeighting}, \textit{FrontierStitching}, \textit{ProtectingIP-pattern} and \textit{ProtectingIP-OOD} (cf. \cref{fig:finetuning-smalllr-permethod-exponential,fig:finetuning-smalllr-permethod-frontier,fig:finetuning-smalllr-permethod-pattern,fig:finetuning-smalllr-permethod-ood}). Note that \textit{WeaknessIntoStrength} was trained only with 20 and 100 trigger images and therefore we do not have the same amount of information compared to the other ones. Although \textit{ExponentialWeighting} shows a downward trend, the watermark accuracy for the models trained with 100/120 trigger images are among the highest compared to other methods, so it is also for \textit{WMEmbeddedSystems}.
+
+% Guidelines für Evaluation:
+To enable more comparable results, it would be very helpful if authors in future research would evaluate their newly proposed IPP method or attack in a more uniform manner. The usage of state-of-the-art DL architectures and datasets should be common practice, as the results of different methods could be compared directly. When authors use custom DNNs instead of well-known ones, it raises concerns whether this method or attack is transferable to another setting or if the algorithm performed only exceptionally well on the chosen custom DNN. Moreover, results that are only shown in plots are difficult to compare, as the exact values are often not possible to identify from a plot. Therefore, we suggest in future research to always provide results both in a table and plot.
+
+% Future work
+For future work, we would wish to explore more attacks on backdoor-based watermarking methods, e.g. fine-pruning or watermark overwriting, and compare the methods on a larger scale of settings, implementing more architectures and use larger datasets, in order to give even clearer recommendations. Also, a comparison with larger datasets would answer the question of whether the trigger set size should be chosen as a ratio of the original dataset, or as some absolute number. Moreover, a thorough analysis of a watermarked model during a pruning or fine-tuning attack could give clearer answers why in some cases a larger trigger set size leads to less robustness.
+
+Further black-box watermarking methods need to be explored, e.g. methods focusing on trigger labelling. Future work could find out if trigger labelling is not only a useful but necessary feature.
+
+As watermarking methods are already quite well studied on image classification with DNNs, it would be useful to also develop concepts for other ML techniques and especially real-world problems. This, however, would need a comprehensive study of different industries and their use cases in order to follow the needs and wishes of real-world problems.

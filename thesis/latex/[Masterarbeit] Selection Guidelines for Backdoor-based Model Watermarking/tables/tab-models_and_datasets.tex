@@ -1,0 +1,33 @@
+\begin{table}
+\small
+\renewcommand{\arraystretch}{1.1}
+\centering
+
+\begin{threeparttable}
+\caption{Study settings in selected papers.}
+\label{tab:models-and-datasets}
+%\rowcolors{2}{white}{gray!15}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Method}               & \textbf{Type}                & \textbf{Dataset}                                                                             & \textbf{Architecture}                                                                                                                                                                                                   \\ \hline
+%\textit{Blackmarks} \cite{chen_blackmarks_2019}           & perturbation               & \begin{tabular}[c]{@{}l@{}}MNIST,\\ CIFAR-10\end{tabular}                           & \begin{tabular}[c]{@{}l@{}}WRN \cite{zagoruyko_wide_2017},\\ AlexNet \cite{krizhevsky_imagenet_2017},\\ custom DNN\end{tabular}                                                                                                                                           \\ \hline
+%EvolutionaryGen      & pattern, (noise)    & \begin{tabular}[c]{@{}l@{}}MNIST,\\ CIFAR-10\end{tabular}                           & \begin{tabular}[c]{@{}l@{}}ResNet-18,\\ ResNet-50,\\ DenseNet-121,\\ VGG-16\end{tabular}                                                                                                                       \\ \hline
+\textit{ExponentialWeighting} \cite{namba_robust_2019} & in-distribution     & \begin{tabular}[c]{@{}l@{}}MNIST,\\ CIFAR-10,\\ CIFAR-100,\\ GTSRB\end{tabular}     & ResNet32                                                                                                                                                                                                       \\ \hline
+\textit{FrontierStitching} \cite{merrer_adversarial_2019}    & perturbation        & MNIST                                                                               & \begin{tabular}[c]{@{}l@{}} MLP \tnote{1} \; ,\\ CNN \tnote{2} \; ,\\ IRNN \tnote{3} \;  \end{tabular}                                                                                                                                \\ \hline
+%HowToProve           & noise/pattern       & \begin{tabular}[c]{@{}l@{}}MNIST,\\ CIFAR-10\end{tabular}                           & \begin{tabular}[c]{@{}l@{}}LeNet-1/2/5,\\ VGG-11/13/16/19,\\ ResNet-18/34/101,\\ PreActResNet-34,\\ GoogleNet,\\ DPN-26,\\ MobileNetV2\end{tabular} \\ \hline
+\textit{PiracyResistant} \cite{li_piracy_2020}     & pattern             & \begin{tabular}[c]{@{}l@{}}MNIST,\\ CIFAR-10,\\ GTSRB,\\ Youtube Faces\end{tabular} & custom DNN                                                                                                                                                                                                     \\ \hline
+\textit{ProtectingIP} \cite{zhang_protecting_2018}        & pattern, noise, OOD & \begin{tabular}[c]{@{}l@{}}MNIST,\\ CIFAR-10\end{tabular}                           & custom DNN                                                                                                                                                                                                     \\ \hline
+\textit{WeaknessIntoStrength} \cite{adi_turning_2018} & OOD                 & \begin{tabular}[c]{@{}l@{}}CIFAR-10,\\ CIFAR-100,\\ ImageNet\end{tabular}           & ResNet-18                                                                                                                                                                                                      \\ \hline
+\textit{WMEmbeddedSystems} \cite{guo_evolutionary_2019}    & pattern             & \begin{tabular}[c]{@{}l@{}}MNIST,\\ CIFAR-10\end{tabular}                           & \begin{tabular}[c]{@{}l@{}}LeNet-5,\\ VGG-16,\\ ResNet50,\\ DenseNet-121\end{tabular}                                                                                                                            \\ \hline
+\end{tabular}
+
+\medskip % some vertical separation
+\begin{tablenotes}
+\footnotesize  % nothing is optional in 'tablenotes'
+\item[1] \url{https://keras.rstudio.com/articles/examples/mnist_mlp.html}
+\item[2] \url{https://keras.rstudio.com/articles/examples/mnist_cnn.html}
+\item[3] \url{https://keras.rstudio.com/articles/examples/mnist_irnn.html}
+
+\end{tablenotes}
+\end{threeparttable}
+\end{table}

@@ -1,0 +1,58 @@
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.4\linewidth}
+        \includegraphics[width=\linewidth]{images/pruning/densenet_pruning_per_arch_08.eps}
+        \caption{DenseNet, 80\% pruned.}
+        \label{fig:pruning-0.8-densenet}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}{0.4\linewidth}
+        \includegraphics[width=\linewidth]{images/pruning/densenet_pruning_per_arch_09.eps}
+        \caption{DenseNet, 90\% pruned.}
+        \label{fig:pruning-0.9-densenet}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}{0.4\linewidth}
+        \includegraphics[width=\linewidth]{images/pruning/resnet18_pruning_per_arch_08.eps}
+        \caption{ResNet-18, 80\% pruned.}
+        \label{fig:pruning-0.8-resnet18}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}{0.4\linewidth}
+        \includegraphics[width=\linewidth]{images/pruning/resnet18_pruning_per_arch_09.eps}
+        \caption{ResNet-18, 90\% pruned.}
+        \label{fig:pruning-0.9-resnet18}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}{0.4\linewidth}
+        \includegraphics[width=\linewidth]{images/pruning/resnet34_pruning_per_arch_08.eps}
+        \caption{ResNet-34, 80\% pruned.}
+        \label{fig:pruning-0.8-resnet34}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}{0.4\linewidth}
+        \includegraphics[width=\linewidth]{images/pruning/resnet34_pruning_per_arch_09.eps}
+        \caption{ResNet-34, 90\% pruned.}
+        \label{fig:pruning-0.9-resnet34}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}{0.4\linewidth}
+        \includegraphics[width=\linewidth]{images/pruning/resnet50_pruning_per_arch_08.eps}
+        \caption{ResNet-50, 80\% pruned.}
+        \label{fig:pruning-0.8-resnet50}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}{0.4\linewidth}
+        \includegraphics[width=\linewidth]{images/pruning/resnet50_pruning_per_arch_09.eps}
+        \caption{ResNet-50, 90\% pruned.}
+        \label{fig:pruning-0.9-resnet50}
+    \end{subfigure}
+    
+    \begin{subfigure}{\linewidth}
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/pruning/legend_pruning_per_arch.eps}
+    \end{subfigure}
+    
+    \caption{Influence of the trigger set size on robustness against pruning on \textbf{CIFAR-10} models. Each plot on the left corresponds pruning with 80\% and each plot on the right to corresponds pruning with 90\%. Each plot shows the results for all watermarking methods.}
+    \label{fig:pruning-cifar10models-perarch}
+\end{figure}

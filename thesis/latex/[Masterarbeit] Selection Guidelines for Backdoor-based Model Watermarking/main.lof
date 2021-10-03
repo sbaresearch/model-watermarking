@@ -1,0 +1,59 @@
+\babel@toc {naustrian}{}
+\babel@toc {naustrian}{}
+\babel@toc {english}{}
+\babel@toc {naustrian}{}
+\babel@toc {english}{}
+\babel@toc {naustrian}{}
+\babel@toc {naustrian}{}
+\addvspace {10pt}
+\babel@toc {naustrian}{}
+\babel@toc {english}{}
+\addvspace {10pt}
+\babel@toc {naustrian}{}
+\babel@toc {english}{}
+\addvspace {10pt}
+\addvspace {10pt}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Literature search process workflow. In every step we denote the number of publications by $N=x$. The numbers 1 to 6 correspond to the CSV-files which contain all the retrieved literature in the particular step.\relax }}{3}{figure.caption.6}% 
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Literature distribution\relax }}{4}{figure.caption.7}% 
+\addvspace {10pt}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Three main categories of ML, their algorithms and use cases. Source: \cite {shewan_10_nodate}\relax }}{8}{figure.caption.8}% 
+\contentsline {figure}{\numberline {3.2}{\ignorespaces A perceptron\relax }}{11}{figure.caption.11}% 
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Computation of first layer in an MLP.\relax }}{12}{figure.caption.14}% 
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Convolutional filters in a Deep Neural Network enhancing features in an image. Usually, the first layers recognise simple features such as lines and corners by comparing the contrast of neighbouring pixels. With this information, the following layers are responsible for recognising whole object parts. In this manner, feeding the pixel information from the input through a series of layers consisting of convolutional, pooling and feed-forward layers, eventually results in a class prediction. Source: \cite {goodfellow_deep_2016}\relax }}{17}{figure.caption.15}% 
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Computation of convolutional filter with padding 1. Padding means how much the filter shifts on the input during the computation. With padding 2, e.g., the filter would move forward two values instead of one, in order to compute the next output value. Source: \cite {goodfellow_deep_2016}\relax }}{18}{figure.caption.16}% 
+\contentsline {figure}{\numberline {3.6}{\ignorespaces LSTM and GRU. Source: \cite {phi_illustrated_2018}\relax }}{19}{figure.caption.17}% 
+\contentsline {figure}{\numberline {3.7}{\ignorespaces A typical watermarking workflow\relax }}{22}{figure.caption.21}% 
+\addvspace {10pt}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Taxonomy of Intellectual Property Protection mechanisms for Machine Learning models. Note, that not all considered papers are referenced in this diagram.\relax }}{24}{figure.caption.22}% 
+\addvspace {10pt}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Different notions of information hiding along a ML process\relax }}{28}{figure.caption.23}% 
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Typical workflows for (a) white-box watermarking and (b) black-box watermarking\relax }}{32}{figure.caption.26}% 
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Examples for the various types of trigger images, intentionally labelled as a different class ((a), (b) as "cat", (c), (d) as "airplane", (e) as "9")\relax }}{35}{figure.caption.27}% 
+\contentsline {figure}{\numberline {5.4}{\ignorespaces The upper left image is the initial image and the following five are trigger images resulting from a hash chain \cite {zhu_secure_2020}.\relax }}{37}{figure.caption.28}% 
+\contentsline {figure}{\numberline {5.5}{\ignorespaces (a) The data points are divided into "true adversaries" ($R$ and $B$) and "false adversaries" ($\mathaccentV {bar}016{R}$ and $\mathaccentV {bar}016{B}$). The label for the true adversaries is changed, the label for the false adversaries stays unchanged. (b) After fine-tuning the decision boundary changes. \cite {merrer_adversarial_2019}\relax }}{37}{figure.caption.29}% 
+\addvspace {10pt}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Representative examples for each class from the training sets of MNIST, CIFAR-10, EMNIST and CINIC-10.\relax }}{53}{figure.caption.34}% 
+\contentsline {figure}{\numberline {6.2}{\ignorespaces ResNet-18 architecture. Source: \cite {almezhghwi_improved_2020}\relax }}{55}{figure.caption.35}% 
+\contentsline {figure}{\numberline {6.3}{\ignorespaces A 5-layer dense block. A DenseNet consists of several dense blocks. Source: \cite {huang_densely_2017}\relax }}{55}{figure.caption.36}% 
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Architecture of LeNet-5. Source: \cite {lecun_gradient-based_1998}\relax }}{55}{figure.caption.37}% 
+\addvspace {10pt}
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Fine-tuning on non-watermarked SimpleNet. The plot on the left side correspond to fine-tuning only the last layer and the one on the right hand side to fine-tuning all layers. The black dash-dotted line corresponds to the benchmark test accuracy of the non-watermarked model.\relax }}{68}{figure.caption.54}% 
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Fine-Tuning on both, CINIC-10 and only on the ImageNet part of CINIC-10. In both cases, 50,000 images are randomly chosen from the corresponding dataset. The underlying model is a ResNet-18 that was trained with \textit {ProtectingIP-pattern} and 100 trigger images. The black dash-dotted line corresponds to the benchmark test accuracy of the non-watermarked model. For clearity reasons, the lines in the plot are smoothed. The original plots are provided in \cref {fig:fine-tuning-both-cinic10-imagenet-original}.\relax }}{69}{figure.caption.55}% 
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Fine-tuning on SimpleNet and DenseNet, watermarked with ProtectingIP-pattern. The plots on the left side correspond to fine-tuning with smaller learning rates and the ones on the right side to fine-tuning with larger learning rates. The black dash-dotted line corresponds to the benchmark test accuracy of the non-watermarked model.\relax }}{70}{figure.caption.56}% 
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Examples for FrontierStitching trigger images for different values of $\epsilon $, created with FGSM on LeNet-1.\relax }}{71}{figure.caption.58}% 
+\contentsline {figure}{\numberline {7.5}{\ignorespaces FrontierStitching with various values for $\epsilon $ (strength of perturbation). The plot shows the relative validation loss difference, i.e. the difference between the validation loss of the watermarked model and the non-watermarked benchmark model divided by the validation loss of the benchmark model. For all values the WM Accuracy is $100\%$. The dots in the plot represent the minimal validation loss difference for the respective architecture.\relax }}{72}{figure.caption.59}% 
+\contentsline {figure}{\numberline {7.6}{\ignorespaces Model accuracy after pruning attacks with pruning rates from 10\% to 90\%. The black dotted line indicates the threshold for the maximal plausible pruning attack.\relax }}{73}{figure.caption.60}% 
+\contentsline {figure}{\numberline {7.7}{\ignorespaces Behaviour of DenseNet during training with embedding type \textit {pretrained} and \textit {fromscratch}.\relax }}{76}{figure.caption.66}% 
+\contentsline {figure}{\numberline {7.8}{\ignorespaces Influence of the trigger set size on \textbf {fidelity}. Each plot corresponds to one architecture and shows the results for all watermarking methods, on the left models trained on \textbf {CIFAR-10} and on the right those trained on \textbf {MNIST}. We plot the relative difference between the test accuracy of the watermarked and non-watermarked model.\relax }}{81}{figure.caption.75}% 
+\contentsline {figure}{\numberline {7.9}{\ignorespaces Influence of the trigger set size on \textbf {fidelity}. Each plot corresponds to one method and shows the results for all architectures. We plot the relative difference between the test accuracy of the watermarked and non-watermarked model.\relax }}{82}{figure.caption.76}% 
+\contentsline {figure}{\numberline {7.10}{\ignorespaces Influence of the trigger set size on robustness against pruning on \textbf {CIFAR-10} models. Each plot on the left corresponds pruning with 80\% and each plot on the right to corresponds pruning with 90\%. Each plot shows the results for all watermarking methods.\relax }}{84}{figure.caption.78}% 
+\contentsline {figure}{\numberline {7.11}{\ignorespaces Influence of the trigger set size on robustness against pruning on \textbf {MNIST} models. Each plot on the left corresponds pruning with 80\% and each plot on the right to corresponds pruning with 90\%. Each plot shows the results for all watermarking methods.\relax }}{85}{figure.caption.79}% 
+\contentsline {figure}{\numberline {7.12}{\ignorespaces Influence of the trigger set size on robustness against fine-tuning on \textbf {CIFAR-10} models. Each plot on the right corresponds fine-tuning with a small learning rate and each plot on the left to fine-tuning with a large learning rate, all of them show the results for all watermarking methods.\relax }}{88}{figure.caption.82}% 
+\contentsline {figure}{\numberline {7.13}{\ignorespaces Influence of the trigger set size on robustness against fine-tuning on MNIST models. Each plot on the left corresponds fine-tuning with a small learning rate and each plot on the right to fine-tuning with a large learning rate, all of them show the results for all watermarking methods.\relax }}{89}{figure.caption.83}% 
+\contentsline {figure}{\numberline {7.14}{\ignorespaces Behaviour of ResNet-18 watermarked with \textit {ProtectingIP-pattern} during a fine-tuning attack with a small learning rate $\alpha =10^{-4}$. The colors indicate the trigger set size, with which the model was watermarked. The black dash-dotted line corresponds to the benchmark test accuracy of the non-watermarked model.\relax }}{90}{figure.caption.84}% 
+\contentsline {figure}{\numberline {7.15}{\ignorespaces Influence of the trigger set size on robustness against fine-tuning with a small learning rate, $10^{-5}$ for MNIST and $10^{-4}$ for CIFAR-10. Each plot corresponds to one watermarking method and shows the results for all architectures.\relax }}{91}{figure.caption.85}% 
+\addvspace {10pt}
+\addvspace {10pt}
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Fine-tuning on \textbf {MNIST} models, watermarked with \textit {ProtectingIP-pattern}. The plots on the left side correspond to fine-tuning with smaller learning rates and the ones on the right side to fine-tuning with larger learning rates. The black dash-dotted line corresponds to the benchmark test accuracy of the non-watermarked model.\relax }}{98}{figure.caption.86}% 
+\contentsline {figure}{\numberline {A.2}{\ignorespaces Fine-tuning on \textbf {CIFAR-10} models, watermarked with \textit {ProtectingIP-pattern}. The plots on the left side correspond to fine-tuning with smaller learning rates and the ones on the right side to fine-tuning with larger learning rates. The black dash-dotted line corresponds to the benchmark test accuracy of the non-watermarked model.\relax }}{99}{figure.caption.87}% 
+\contentsline {figure}{\numberline {A.3}{\ignorespaces Fine-Tuning on both, CINIC-10 and only on the ImageNet part of CINIC-10. Original line plots to \cref {fig:fine-tuning-both-cinic10-imagenet}.\relax }}{100}{figure.caption.88}% 

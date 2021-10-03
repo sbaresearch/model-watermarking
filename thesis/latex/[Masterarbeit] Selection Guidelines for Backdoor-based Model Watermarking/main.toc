@@ -1,0 +1,98 @@
+\babel@toc {naustrian}{}
+\babel@toc {naustrian}{}
+\babel@toc {english}{}
+\babel@toc {naustrian}{}
+\babel@toc {english}{}
+\babel@toc {naustrian}{}
+\babel@toc {naustrian}{}
+\contentsline {chapter}{Kurzfassung}{ix}{chapter*.3}% 
+\babel@toc {naustrian}{}
+\babel@toc {english}{}
+\contentsline {chapter}{Abstract}{xi}{chapter*.4}% 
+\babel@toc {naustrian}{}
+\babel@toc {english}{}
+\contentsline {chapter}{Contents}{xiii}{section*.5}% 
+\contentsline {chapter}{\chapternumberline {1}Introduction}{1}{chapter.1}% 
+\contentsline {chapter}{\chapternumberline {2}Methodology}{3}{chapter.2}% 
+\contentsline {section}{\numberline {2.1}Literature search}{3}{section.2.1}% 
+\contentsline {subsection}{\numberline {2.1.1}Inclusion/exclusion criteria}{4}{subsection.2.1.1}% 
+\contentsline {section}{\numberline {2.2}Empirical evaluation}{5}{section.2.2}% 
+\contentsline {chapter}{\chapternumberline {3}Background}{7}{chapter.3}% 
+\contentsline {section}{\numberline {3.1}Machine Learning}{7}{section.3.1}% 
+\contentsline {subsection}{\numberline {3.1.1}Supervised Machine Learning}{9}{subsection.3.1.1}% 
+\contentsline {paragraph}{Linear Regression}{10}{section*.10}% 
+\contentsline {paragraph}{Perceptron}{11}{section*.12}% 
+\contentsline {subsubsection}{Deep Learning}{12}{section*.13}% 
+\contentsline {subsubsection}{Fine-Tuning}{18}{section*.18}% 
+\contentsline {subsubsection}{Overfitting}{18}{section*.19}% 
+\contentsline {subsubsection}{Parameter Pruning}{20}{section*.20}% 
+\contentsline {subsection}{\numberline {3.1.2}Further ML techniques}{20}{subsection.3.1.2}% 
+\contentsline {subsection}{\numberline {3.1.3}Model Extraction Attack}{21}{subsection.3.1.3}% 
+\contentsline {section}{\numberline {3.2}Watermarking}{21}{section.3.2}% 
+\contentsline {section}{\numberline {3.3}Fingerprinting}{22}{section.3.3}% 
+\contentsline {chapter}{\chapternumberline {4}Taxonomy of IPP for ML models}{23}{chapter.4}% 
+\contentsline {section}{\numberline {4.1}Threat Model}{23}{section.4.1}% 
+\contentsline {section}{\numberline {4.2}IPP Methods}{24}{section.4.2}% 
+\contentsline {section}{\numberline {4.3}Attack Model}{25}{section.4.3}% 
+\contentsline {chapter}{\chapternumberline {5}State of the Art: Model Watermarking, Fingerprinting and Attacks}{27}{chapter.5}% 
+\contentsline {section}{\numberline {5.1}Requirements}{28}{section.5.1}% 
+\contentsline {section}{\numberline {5.2}White-box Watermarking}{31}{section.5.2}% 
+\contentsline {section}{\numberline {5.3}Black-box Watermarking}{34}{section.5.3}% 
+\contentsline {subsection}{\numberline {5.3.1}Out-of-distribution}{35}{subsection.5.3.1}% 
+\contentsline {subsection}{\numberline {5.3.2}Pattern}{36}{subsection.5.3.2}% 
+\contentsline {subsection}{\numberline {5.3.3}Noise}{37}{subsection.5.3.3}% 
+\contentsline {subsection}{\numberline {5.3.4}Perturbation}{37}{subsection.5.3.4}% 
+\contentsline {subsection}{\numberline {5.3.5}In-distribution}{38}{subsection.5.3.5}% 
+\contentsline {subsection}{\numberline {5.3.6}Trigger labelling}{38}{subsection.5.3.6}% 
+\contentsline {subsection}{\numberline {5.3.7}Countering Model Extraction}{39}{subsection.5.3.7}% 
+\contentsline {subsection}{\numberline {5.3.8}Watermarking for specific ML settings}{40}{subsection.5.3.8}% 
+\contentsline {section}{\numberline {5.4}Fingerprinting of ML Models}{40}{section.5.4}% 
+\contentsline {subsection}{\numberline {5.4.1}Fingerprinting as User-specific Watermark}{41}{subsection.5.4.1}% 
+\contentsline {subsection}{\numberline {5.4.2}Fingerprinting as Unique Model Identifier}{41}{subsection.5.4.2}% 
+\contentsline {section}{\numberline {5.5}Attacks on Watermarking Methods}{42}{section.5.5}% 
+\contentsline {subsection}{\numberline {5.5.1}Watermark Overwriting}{42}{subsection.5.5.1}% 
+\contentsline {subsection}{\numberline {5.5.2}Watermark Detection}{42}{subsection.5.5.2}% 
+\contentsline {subsection}{\numberline {5.5.3}Watermark Removal}{44}{subsection.5.5.3}% 
+\contentsline {subsection}{\numberline {5.5.4}Watermark Invalidation}{46}{subsection.5.5.4}% 
+\contentsline {section}{\numberline {5.6}Surveys and empirical studies}{46}{section.5.6}% 
+\contentsline {chapter}{\chapternumberline {6}Defining research questions and study setting}{49}{chapter.6}% 
+\contentsline {section}{\numberline {6.1}Datasets}{52}{section.6.1}% 
+\contentsline {section}{\numberline {6.2}Neural Networks}{54}{section.6.2}% 
+\contentsline {subsection}{\numberline {6.2.1}Training time}{57}{subsection.6.2.1}% 
+\contentsline {section}{\numberline {6.3}Setting hyperparameters}{58}{section.6.3}% 
+\contentsline {subsection}{\numberline {6.3.1}Setting watermark-specific hyperparameters}{59}{subsection.6.3.1}% 
+\contentsline {chapter}{\chapternumberline {7}Empirical comparison of existing watermarking methods}{61}{chapter.7}% 
+\contentsline {section}{\numberline {7.1}Implementation}{61}{section.7.1}% 
+\contentsline {subsection}{\numberline {7.1.1}Framework for watermarking methods}{62}{subsection.7.1.1}% 
+\contentsline {subsubsection}{WeaknessIntoStrength}{63}{section*.44}% 
+\contentsline {subsubsection}{ProtectingIP}{64}{section*.45}% 
+\contentsline {subsubsection}{PiracyResistant}{64}{section*.46}% 
+\contentsline {subsubsection}{ExponentialWeighting}{64}{section*.47}% 
+\contentsline {subsubsection}{FrontierStitching}{65}{section*.48}% 
+\contentsline {subsubsection}{WMEmbeddedSystems}{65}{section*.49}% 
+\contentsline {subsection}{\numberline {7.1.2}Attacks}{66}{subsection.7.1.2}% 
+\contentsline {subsubsection}{Parameter Pruning}{66}{section*.52}% 
+\contentsline {subsubsection}{Fine-Tuning}{67}{section*.53}% 
+\contentsline {section}{\numberline {7.2}Evaluation}{67}{section.7.2}% 
+\contentsline {subsection}{\numberline {7.2.1}Evaluation of Fine-Tuning}{68}{subsection.7.2.1}% 
+\contentsline {subsection}{\numberline {7.2.2}Influence of watermark-specific hyparameters}{71}{subsection.7.2.2}% 
+\contentsline {subsubsection}{FrontierStitching}{71}{section*.57}% 
+\contentsline {subsubsection}{WMEmbeddedSystems}{73}{section*.62}% 
+\contentsline {subsection}{\numberline {7.2.3}Comparing to State of the Art}{75}{subsection.7.2.3}% 
+\contentsline {subsubsection}{WeaknessIntoStrength}{75}{section*.64}% 
+\contentsline {subsubsection}{ProtectingIP}{75}{section*.67}% 
+\contentsline {subsubsection}{FrontierStitching}{77}{section*.70}% 
+\contentsline {subsubsection}{WMEmbeddedSystems}{78}{section*.72}% 
+\contentsline {subsection}{\numberline {7.2.4}Effectiveness}{79}{subsection.7.2.4}% 
+\contentsline {subsection}{\numberline {7.2.5}Fidelity}{80}{subsection.7.2.5}% 
+\contentsline {subsection}{\numberline {7.2.6}Robustness}{83}{subsection.7.2.6}% 
+\contentsline {subsubsection}{Parameter Pruning}{83}{section*.77}% 
+\contentsline {subsubsection}{Fine-Tuning}{87}{section*.81}% 
+\contentsline {chapter}{\chapternumberline {8}Conclusions and future work}{93}{chapter.8}% 
+\contentsline {appendix}{\chapternumberline {A}Appendix}{97}{appendix.A}% 
+\contentsline {section}{\numberline {A.1}Dependencies}{97}{section.A.1}% 
+\contentsline {section}{\numberline {A.2}Additional figures}{97}{section.A.2}% 
+\contentsline {subsection}{\numberline {A.2.1}Experiments for fine-tuning}{97}{subsection.A.2.1}% 
+\contentsline {chapter}{List of Figures}{101}{section*.89}% 
+\contentsline {chapter}{List of Tables}{105}{section*.90}% 
+\contentsline {chapter}{Bibliography}{107}{appendix*.91}% 

@@ -1,0 +1,31 @@
+\begin{table}
+\caption{Attacks used in the papers.}
+\label{tab:attacks_per_method}
+\begin{threeparttable}
+
+\resizebox{\textwidth}{!}{
+\begin{tabular}{|l|c|c|l|}
+\hline
+                     & \textbf{Pruning}                   & \textbf{Fine-Tuning}              & \textbf{Other attacks?}                           \\ \hline
+\textit{WeaknessIntoStrength} \cite{adi_turning_2018} &                           & \checkmark (STL-10) &                                         \\ \hline
+\textit{ProtectingIP} \cite{zhang_protecting_2018}         & \checkmark & \checkmark \tnote{1} &                                         \\ \hline
+\textit{PiracyResistant} \cite{li_piracy_2020}     & \checkmark & \checkmark \tnote{2} & \begin{tabular}[c]{@{}l@{}}Neural Cleanse \cite{wang_neural_2019},\\ Model Extraction Attack \cite{tramer_stealing_2016},\\ Piracy Attack \end{tabular} \\ \hline
+\textit{ExponentialWeighting} \cite{namba_robust_2019} &                           &                           & Query Modification \cite{namba_robust_2019}                     \\ \hline
+\textit{FrontierStitching} \cite{merrer_adversarial_2019}   & \checkmark & \checkmark \tnote{2} &                                         \\ \hline
+\textit{WMEmbeddedSystems} \cite{guo_watermarking_2018}   &                           &                           &                                         \\ \hline
+%Blackmarks \cite{chen_blackmarks_2019}          & \checkmark & \checkmark & Watermark Overwriting \cite{uchida_embedding_2017}                   \\ \hline
+\end{tabular}
+}
+
+\medskip % some vertical separation
+\begin{tablenotes}
+\footnotesize  % nothing is optional in 'tablenotes'
+\item[1] use half of the original test set for fine-tuning and the other half for evaluating the model
+\item[2] do not specify the dataset for fine-tuning
+
+\end{tablenotes}
+
+
+\end{threeparttable}
+
+\end{table}

@@ -1,0 +1,19 @@
+\begin{table}
+\small
+    \centering
+    %\rowcolors{2}{white}{gray!15}
+    \caption{Results for ranking system for FrontierStitching. The bold numbers are the highest number for each architecture and indicate the winning $\epsilon$.}
+    \begin{tabular}{|l|l|l|l|l|l|l|}
+        \hline
+        \textbf{Arch.} & $\epsilon=0.0001$ & $\epsilon=0.001$ & $\epsilon=0.01$  & $\epsilon=0.1$ & $\epsilon=0.5$ & $\epsilon=1.0$ \\ \hline
+        DenseNet  & 14   & 12.5 & \textbf{16}   & 10.5 & 11   & 4    \\ \hline
+        ResNet-18 & 7.5  & 11.5 & 11   & \textbf{12}   & 11.5 & 9.5  \\ \hline
+        ResNet-34 & 12.5 & 9.5  & \textbf{13.5} & 12.5 & 7.5  & 7.5  \\ \hline
+        ResNet-50 & \red{TODO}     &  \red{TODO}    &  \red{TODO}    &   \red{TODO}   &  \red{TODO}    &  \red{TODO}    \\ \hline
+        SimpleNet & 11   & \textbf{12.5} & 12   & 9.5  & 7.5  & 10.5 \\ \hline
+        LeNet-1   & 7    & 7    & 10   & 10   & \textbf{17}   & 12   \\ \hline
+        LeNet-3   & 5.5  & 12   & 7    & \textbf{16}   & 11   & 11.5 \\ \hline
+        LeNet-5   & 7.5  & 4    & 9.5  & 11   & \textbf{16}   & 15   \\ \hline
+    \end{tabular}
+    \label{tab:frontier_ranking}
+\end{table}

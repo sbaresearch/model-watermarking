@@ -1,0 +1,9 @@
+dataset;num_classes;arch;;method;;;runname;trg_set_size;thresh;embed_type;loadmodel;;;;epoch_w_wm;epochs_wo_wm;batch_size;wm_batch_size;lr;lradj;optim;sched;;cuda;;trg_set_sizes;save_results;test_acc;wm_acc;;;;valid_loss;epoch;;embed_time
+cifar10;10;densenet;False;no_wm;;False;train_model_NEW_densenet_64_200_earlypatience_40_sgd_cosine;0;;;;;;;0;;;;;;SGD;CosineAnnealingLR;;;;;;94.581;;;;;;;;
+cifar10;10;resnet18;False;no_wm;;False;train_model_resnet18_64_200_earlystopping_sgd_cosine;0;;;;;;;0;;;;;;SGD;CosineAnnealingLR;;;;;;95.122;;;;;;;;
+cifar10;10;resnet34;False;no_wm;;False;train_model_resnet34_64_200_earlystopping_sgd_cosine;0;;;;;;;0;;;;;;SGD;CosineAnnealingLR;;;;;;95.212;;;;;;;;
+cifar10;10;resnet50;False;no_wm;;False;train_model_resnet50_64_200_earlystopping_sgd_cosine;0;;;;;;;0;;;;;;SGD;CosineAnnealingLR;;;;;;94.391;;;;;;;;
+mnist;10;simplenet_mnist;False;no_wm;;False;train_model_simplenet_64_200_earlystopping_sgd_multistep;0;;;;;;;0;;;;;;SGD;MultiStepLR;;;;;;99.589;;;;;;;;
+mnist;10;lenet1;False;no_wm;;False;train_model_lenet1_64_200_earlypatience_40_adam001_multistep;0;;;;;;;0;;;;;;ADAM;MultiStepLR;;;;;;98.768;;;;;;;;
+mnist;10;lenet3;False;no_wm;;False;train_model_lenet3_64_200_earlystopping_sgd_multistep;0;;;;;;;0;;;;;;SGD;MultiStepLR;;;;;;99.229;;;;;;;;
+mnist;10;lenet5;False;no_wm;;False;train_model_lenet5_64_200_earlystopping_sgd_multistep;0;;;;;;;0;;;;;;SGD;MultiStepLR;;;;;;99.229;;;;;;;;

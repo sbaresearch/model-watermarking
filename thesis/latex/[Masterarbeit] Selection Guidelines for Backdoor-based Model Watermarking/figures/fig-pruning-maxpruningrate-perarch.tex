@@ -1,0 +1,58 @@
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.4\linewidth}
+        \includegraphics[width=\linewidth]{images/pruning/densenet_pruning_per_arch_maximal_pr_rate.eps}
+        \caption{DenseNet}
+        \label{fig:pruning-max-pr-rate-densenet}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}{0.4\linewidth}
+        \includegraphics[width=\linewidth]{images/pruning/simplenet_mnist_pruning_per_arch_maximal_pr_rate.eps}
+        \caption{SimpleNet}
+        \label{fig:pruning-max-pr-rate-simplenet}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}{0.4\linewidth}
+        \includegraphics[width=\linewidth]{images/pruning/lenet1_pruning_per_arch_maximal_pr_rate.eps}
+        \caption{ResNet-18}
+        \label{fig:pruning-max-pr-rate-resnet18}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}{0.4\linewidth}
+        \includegraphics[width=\linewidth]{images/pruning/lenet1_pruning_per_arch_maximal_pr_rate.eps}
+        \caption{LeNet-1}
+        \label{fig:pruning-max-pr-rate-lenet1}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}{0.4\linewidth}
+        \includegraphics[width=\linewidth]{images/pruning/resnet34_pruning_per_arch_maximal_pr_rate.eps}
+        \caption{ResNet-34}
+        \label{fig:pruning-max-pr-rate-resnet34}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}{0.4\linewidth}
+        \includegraphics[width=\linewidth]{images/pruning/lenet3_pruning_per_arch_maximal_pr_rate.eps}
+        \caption{LeNet-3}
+        \label{fig:pruning-max-pr-rate-lenet3}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}{0.4\linewidth}
+        \includegraphics[width=\linewidth]{images/pruning/resnet50_pruning_per_arch_maximal_pr_rate.eps}
+        \caption{ResNet-50}
+        \label{fig:pruning-max-pr-rate-resnet50}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}{0.4\linewidth}
+        \includegraphics[width=\linewidth]{images/pruning/lenet5_pruning_per_arch_maximal_pr_rate.eps}
+        \caption{LeNet-5}
+        \label{fig:pruning-max-pr-rate-lenet5}
+    \end{subfigure}
+    
+    \begin{subfigure}{\linewidth}
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/pruning/legend_pruning_per_arch_maximal_pr_rate.eps}
+    \end{subfigure}
+    
+    \caption{Influence of the trigger set size on robustness against pruning with the maximal plausible pruning rate. The plots on the left correspond to models trained on \textbf{CIFAR-10} and the ones on the right to models trained on \textbf{MNIST}. Each plot shows the results for all watermarking methods.}
+    \label{fig:pruning-max-pr-rate-perarch}
+\end{figure}

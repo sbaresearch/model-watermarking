@@ -1,0 +1,20 @@
+\begin{algorithm}[H]
+\caption{General framework}\label{algo:framework}
+\begin{algorithmic}[1]
+\REQUIRE dataset $\mathcal{D}$, initialised or pre-trained model $\mathcal{F}_{\mathbf{w}}$, hyperparameters $\beta$
+\ENSURE watermarked model $\mathcal{F}_{\mathbf{w}}^{M}$, trigger set $\mathcal{T}$
+
+\STATE $\mathrm{wm\_method} \gets WMMethod.init(\beta)$
+
+\STATE $\mathcal{T} \gets \mathrm{wm\_method}.gen\_watermark(\mathcal{F}_{\mathbf{w}}, \mathcal{D})$
+
+\STATE $\mathcal{F}_{\mathbf{w}}^{M} \gets \mathrm{wm\_method}.embed\_watermark(\mathcal{F}_{\mathbf{w}}, \mathcal{D}, \mathcal{T})$
+
+\STATE $\mathrm{wm\_acc} \gets \mathrm{wm\_method}.verify\_watermark(\mathcal{F}_{\mathbf{w}}^{M}, \mathcal{T})$
+\IF {wm\_acc $\geq$ threshold}
+    \PRINT Watermark was verified.
+\ELSE 
+    \PRINT Watermark was not verified.
+\ENDIF
+\end{algorithmic}
+\end{algorithm}

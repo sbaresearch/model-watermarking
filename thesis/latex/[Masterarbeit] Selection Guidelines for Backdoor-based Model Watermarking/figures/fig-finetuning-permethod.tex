@@ -1,0 +1,65 @@
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.41\linewidth}
+        \includegraphics[width=\linewidth]{images/finetuning/WeaknessIntoStrength_finetuning_per_method_smalllr.eps}
+        \caption{WeaknessIntoStrength}
+        \label{fig:finetuning-smalllr-permethod-weakness}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}{0.41\linewidth}
+        \includegraphics[width=\linewidth]{images/finetuning/ProtectingIP-OOD_finetuning_per_method_smalllr.eps}
+        \caption{ProtectingIP-OOD}
+        \label{fig:finetuning-smalllr-permethod-ood}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}{0.41\linewidth}
+        \includegraphics[width=\linewidth]{images/finetuning/ProtectingIP-pattern_finetuning_per_method_smalllr.eps}
+        \caption{ProtectingIP-pattern}
+        \label{fig:finetuning-smalllr-permethod-pattern}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}{0.41\linewidth}
+        \includegraphics[width=\linewidth]{images/finetuning/ProtectingIP-noise_finetuning_per_method_smalllr.eps}
+        \caption{ProtectingIP-noies}
+        \label{fig:finetuning-smalllr-permethod-noise}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}{0.41\linewidth}
+        \includegraphics[width=\linewidth]{images/finetuning/PiracyResistant_finetuning_per_method_smalllr.eps}
+        \caption{PiracyResistant}
+        \label{fig:finetuning-smalllr-permethod-piracy}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}{0.41\linewidth}
+        \includegraphics[width=\linewidth]{images/finetuning/ExponentialWeighting_finetuning_per_method_smalllr.eps}
+        \caption{ExponentialWeighting}
+        \label{fig:finetuning-smalllr-permethod-exponential}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}{0.41\linewidth}
+        \includegraphics[width=\linewidth]{images/finetuning/FrontierStitching_finetuning_per_method_smalllr.eps}
+        \caption{FrontierStitching}
+        \label{fig:finetuning-smalllr-permethod-frontier}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}{0.41\linewidth}
+        \includegraphics[width=\linewidth]{images/finetuning/WMEmbeddedSystems_finetuning_per_method_smalllr.eps}
+        \caption{WMEmbeddedSystems}
+        \label{fig:finetuning-smalllr-permethod-embedded}
+    \end{subfigure}
+    \quad
+    %\begin{subfigure}{0.41\linewidth}
+    %    \includegraphics[width=\linewidth]{images/finetuning/Blackmarks_finetuning_per_method_smalllr.eps}
+    %    \caption{Blackmarks}
+    %    \label{fig:finetuning-smalllr-permethod-blackmarks}
+    %\end{subfigure}
+
+    
+    \begin{subfigure}{\linewidth}
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/finetuning/legend_finetuning_per_method_colors.eps}
+    \end{subfigure}
+    
+    \caption{Influence of the trigger set size on robustness against fine-tuning with a small learning rate, $10^{-5}$ for MNIST and  $10^{-4}$ for CIFAR-10. Each plot corresponds to one watermarking method and shows the results for all architectures.}
+    \label{fig:finetuning-smalllr-permethod}
+\end{figure}

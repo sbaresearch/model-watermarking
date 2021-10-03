@@ -1,0 +1,21 @@
+\begin{table}
+\small
+    \centering
+    \caption{Embedding and fine-tuning time (with learning rate 0.01) for \textit{WeaknessIntoStrength} with 100 trigger images. The time is given in the format (hh:mm:ss).}
+    %\rowcolors{2}{white}{gray!15}
+\begin{tabular}{|l|l|r|r|r|r|}
+\hline
+\textbf{Arch} & \textbf{Dataset} & \textbf{Embedding} & \textbf{Iterations} & \textbf{Fine-tuning} & \textbf{Iterations} \\ \hline
+DenseNet      & CIFAR-10         & 05:09:18                      & 190                 & 02:28:43                        & 100                     \\ \hline
+ResNet-18     & CIFAR-10         & 02:28:46                      & 191                 & 01:21:00                                & 100                    \\ \hline
+ResNet-34     & CIFAR-10         & 04:02:41                      & 195                 & 01:51:41                        & 100                    \\ \hline
+ResNet-50     & CIFAR-10         & 06:16:30                      & 195                 & 02:40:16                        & 100                    \\ \hline
+SimpleNet     & MNIST            & 00:14:12                      & 21                  & 00:40:26                        & 100                    \\ \hline
+LeNet-1       & MNIST            & 00:06:31                      & 21                  & 00:13:11                        & 100                    \\ \hline
+LeNet-3       & MNIST            & 00:06:41                      & 25                  & 00:13:09                        & 100                    \\ \hline
+LeNet-5       & MNIST            & 00:06:47                      & 21                  & 00:13:42                        & 100                    \\ \hline
+\hline
+\textbf{Sum}           &                  & \textbf{18:31:26}                      &                     & \textbf{09:42:09}                                &                     \\ \hline
+\end{tabular}
+\label{tab:training_time}
+\end{table}
