@@ -20,7 +20,7 @@ from helpers.transforms import EmbedText
 from trainer import test, train, train_on_augmented
 
 
-class ProtectingIPP(WmMethod):
+class ProtectingIP(WmMethod):
     def __init__(self, args):
         super().__init__(args)
 

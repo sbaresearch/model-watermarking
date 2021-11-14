@@ -7,11 +7,14 @@ import os
 import logging
 
 
-def transfer_learning(net, device, criterion, optimizer, scheduler, test_loader_orig, dataset, batch_size, num_epochs, patience, savefile,
-                      wm_loader=None, tune_all=True):
+def fine_tune(net, device, criterion, optimizer, scheduler, test_loader_orig, dataset, batch_size, num_epochs, patience,
+              savefile, wm_loader=None, tune_all=True):
+    """
+    Run Fine-Tuning Attack on model.
+    """
 
     if dataset == 'cifar10':
-        #target_domain = 'cinic10'
+        # target_domain = 'cinic10'
         target_domain = 'cinic10-imagenet'
         size_train = 50000  # or half
         size_test = 10000  # or half

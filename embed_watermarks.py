@@ -75,7 +75,6 @@ parser.add_argument('--test_quot', default=None, type=int,
                     help='the quotient of data subset (for testing reasons; default: None)')
 
 # experiments
-# To make the input integers
 parser.add_argument('--trg_set_sizes_list', nargs='+', default=[100], type=int, help='trgset sizes for experiments')
 parser.add_argument('--save_file', default="save_results.csv", help='file for saving results')
 
@@ -137,21 +136,6 @@ try:
 
         generation_time = 0
         embedding_time = 0
-
-        # if args.method == 'Blackmarks':
-        #     logging.info('Load model. ' + args.arch)
-        #     net = models.__dict__[args.arch](num_classes=args.num_classes)
-        #     net.load_state_dict(torch.load(os.path.join('checkpoint', args.loadmodel + '.t7')))
-        #     net = net.to(device)
-        #
-        #     wm_method = watermarks.__dict__[args.method](args)
-        #     start_time = time.time()
-        #     wm_method.gen_watermarks(net, train_set, net, criterion, device, eps=0.5)
-        #     generation_time = time.time() - start_time
-        #     logging.info("Time for generating watermarks: %s" % generation_time)
-        #
-        #     del wm_method
-        #     del net
 
         runname = args.runname
 

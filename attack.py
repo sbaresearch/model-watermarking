@@ -11,9 +11,8 @@ import argparse
 import torch.nn as nn
 import torch.optim as optim
 
-from attacks.pruning_attack import prune
-from attacks.fine_tuning_attack import fine_tune
-from attacks.transfer_learning import transfer_learning
+from attacks.pruning import prune
+from attacks.fine_tuning import fine_tune
 
 # set up argument parser
 from helpers.loaders import get_data_transforms, get_dataloader, get_dataset, get_wm_transform, get_wm_path
@@ -125,22 +124,12 @@ if args.attack_type == 'pruning':
             logging.info('Saving attacked model.')
             torch.save(net.state_dict(), os.path.join(cwd, 'checkpoint', info + '_' + str(pruning_rate) + '.t7'))
 
-elif args.attack_type == 'transfer-learning':
-
-    # # re initialize and re train the last layer
-    # private_key = net.module.linear
-    # if args.reinitll:
-    #     net, _ = re_initializer_layer(net, args.num_classes)
-
-    # if device is 'cpu':
-    #     net.unfreeze_model()
-    # else:
-    #     net.module.unfreeze_model()
+elif args.attack_type == 'fine-tuning':
 
     net.unfreeze_model()
 
     start_time = time.time()
-    test_acc, val_loss, wm_acc, test_acc_orig, epoch, history = transfer_learning(net, device, criterion, optimizer,
+    test_acc, val_loss, wm_acc, test_acc_orig, epoch, history = fine_tune(net, device, criterion, optimizer,
                                                                                   scheduler, test_loader,
                                                                                   args.dataset, args.batch_size,
                                                                                   args.num_epochs, args.patience,

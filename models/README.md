@@ -1,0 +1,13 @@
+# Models
+
+In this directory, you find the architectures that were used for training the watermarked and non-watermarked models.
+
+| Py-file            | What is it for?                                                                                                                                                                                                                                    |
+|--------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| cnn_cifar10.py     | Simple CNN for CIFAR-10, for testing reasons, especially on the local computer                                                                                                                                                                     |
+| cnn_mnist.py       | Simple CNN for MNIST, for testing reasons, especially on the local computer                                                                                                                                                                        |
+| densenet.py        | DenseNet-121 (with growth rate 16)                                                                                                                                                                                                                 |
+| ew_layers.py       | Layer for ExponentialWeighting: EWConv2d and EWLinear. The exponentially weighting is only activated when the method /disable/ is called on the layer. Therefore, for the other methods the EW-Layers are just the usual Conv2d and Linear layers. |
+| lenet.py           | LeNet-1, LeNet-3 and LeNet-5                                                                                                                                                                                                                       |
+| resnet.py          | ResNet-18, ResNet-34 and ResNet-50                                                                                                                                                                                                                 |
+| simplenet_mnist.py | SimpleNet on MNIST (usually SimpleNet is used for CIFAR-10 or ImageNet, so it represents a very complex model for MNIST)                                                                                                                           |

@@ -11,11 +11,13 @@
 
 import torch
 import torch.nn.utils.prune
-import os
 import logging
 
-
 def get_params_to_prune(arch, net):
+    """
+    get parameters which are going to be pruned. Maybe there would have been a better way to do this, but I could not find one
+    """
+
     if arch == "cnn_mnist":
         return (
             (net.conv_layer[0], 'weight'),
@@ -1211,6 +1213,9 @@ def get_modules(arch, net):
                 ]
 
 def prune(net, arch, pruning_rate):
+    """
+    Run Pruning Attack on model.
+    """
     logging.info('Set parameters to prune')
     parameters_to_prune = get_params_to_prune(arch, net)
 
