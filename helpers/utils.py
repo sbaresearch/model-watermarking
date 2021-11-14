@@ -344,28 +344,6 @@ def make_loss_plot(avg_train_losses, avg_valid_losses, runname):
     fig.savefig('loss_plots/loss_plot_' + runname + '.png', bbox_inches='tight')
 
 
-def send_email(text=""):
-    msg = MIMEMultipart()
-    msg['From'] = 'ledererisabell96@gmail.com'
-    msg['To'] = 'isabell.lederer@hotmail.com'
-    msg['Subject'] = 'Email from python'
-    message = text
-    msg.attach(MIMEText(message))
-
-    mailserver = smtplib.SMTP('smtp.gmail.com', 587)
-    # identify ourselves to smtp gmail client
-    mailserver.ehlo()
-    # secure our email with tls encryption
-    mailserver.starttls()
-    # re-identify ourselves as an encrypted connection
-    mailserver.ehlo()
-    mailserver.login('ledererisabell96@gmail.com', 'wawmiR-jykzeq-zuxqi6')
-
-    mailserver.sendmail('ledererisabell96@gmail.com', 'isabell.lederer@hotmail.com', msg.as_string())
-
-    mailserver.quit()
-
-
 def get_trg_set_sizes(dataset):
     if dataset == "cifar10":
         return [50, 100, 200, 400, 500]
