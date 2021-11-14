@@ -11,16 +11,7 @@ import logging
 import pickle
 import shutil
 
-#from smtplib import SMTP_SSL as SMTP  # this invokes the secure SMTP protocol (port 465, uses SSL)
-# from smtplib import SMTP                  # use this for standard SMTP protocol   (port 25, no encryption)
-
-
-# old version
-# from email.MIMEText import MIMEText
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
-
-import smtplib
+import torch.nn as nn
 
 import numpy as np
 import torch
@@ -409,6 +400,7 @@ def zip_checkpoint_dir(save_dir, save_model):
 
     # zip dir
     shutil.make_archive(dir, 'zip', dir)
+
 
 def re_initializer_layer(model, num_classes, layer=None):
     """remove the last layer and add a new one"""

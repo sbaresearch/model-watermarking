@@ -129,7 +129,6 @@ try:
 except Exception as e:
     msg = 'An error occured during setup: ' + str(e)
     logging.error(msg)
-    send_email(msg)
 
 try:
     if args.wmtrain:
@@ -219,11 +218,9 @@ try:
         del optimizer
         del scheduler
 
-    send_email("Training done. Runname: " + runname)
 
 except Exception as e:
     msg = 'An error occured during training in ' + args.runname + ': ' + str(e)
     logging.error(msg)
-    send_email(msg)
 
     traceback.print_tb(e.__traceback__)
