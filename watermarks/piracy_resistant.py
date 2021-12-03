@@ -30,8 +30,6 @@ class PiracyResistant(WmMethod):
         self.v = None
         self.p = None  # pattern
         self.y_w = None
-        # self.lmbda = 100
-        # self.pattern_size = 6
         self.true_wm = None
         self.null_wm = None
 

@@ -66,7 +66,6 @@ class ExponentialWeighting(WmMethod):
                 new_lbl = (lbl + 1) % self.num_classes
                 self.trigger_set.append((img, new_lbl))
 
-            #train_set.indices = indices
             train_set = torch.utils.data.Subset(train_set.dataset, new_indices)
 
         else:
@@ -78,14 +77,6 @@ class ExponentialWeighting(WmMethod):
                 img, lbl = train_set[i]
                 new_lbl = (lbl + 1) % self.num_classes
                 self.trigger_set.append((img, new_lbl))
-
-            # ODER vlt so:
-            # images = train_set[trigger_indices][0]
-            # lables = train_set[trigger_indices][1]
-            # new_lables = [(lbl+1) % self.num_classes for lbl in lables]
-            # self.trigger_set = [(img, lbl) for (img, lbl) in zip(images, new_lables)]
-
-            # train_set = torch.utils.data.Subset(train_set, indices)
 
         if self.save_wm:
             save_triggerset(self.trigger_set, self.path, self.dataset)

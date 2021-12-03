@@ -77,7 +77,7 @@ log_dir = os.path.join(cwd, 'log')
 os.makedirs(log_dir, exist_ok=True)
 if args.attack_type == 'pruning':
     info = str(args.attack_type) + '_' + str(args.loadmodel) + '_pruned'
-elif args.attack_type == 'transfer-learning':
+elif args.attack_type == 'fine-tuning':
     info = str(args.attack_type) + '_imagenet_' + str(args.loadmodel) + '_transfer-learned_' + str(args.lr) + '_tunealllayers_' + str(args.tunealllayers)
 
 logfile = os.path.join(log_dir, time.strftime("%Y%m%d-%H%M%S_") + 'log_' + info + '.txt')

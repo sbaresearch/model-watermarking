@@ -91,7 +91,6 @@ try:
 
 except Exception as e:
     msg = 'An error occured during setup: ' + str(e)
-    send_email(msg)
 
 try:
     generation_time = 0
@@ -102,25 +101,6 @@ try:
 
         start_time = time.time()
         wm_method.gen_watermarks(device)
-        generation_time = time.time() - start_time
-
-    elif args.method == 'EvolutionaryGen':
-
-        net = models.__dict__[args.arch](num_classes=args.num_classes)
-        net.load_state_dict(torch.load(os.path.join('checkpoint', args.loadmodel + '.t7')))
-        net.to(device)
-
-        criterion = nn.CrossEntropyLoss()
-
-        transform_train, transform_test = get_data_transforms(args.dataset)
-        train_set, _, _ = get_dataset(args.dataset, os.path.join(cwd, 'data'), os.path.join(cwd, 'data'),
-                                      transform_train, transform_test)
-
-        thresh = 0.999
-        iters = 10
-
-        start_time = time.time()
-        wm_method.gen_watermarks(net, criterion, train_set, device, iters=iters, threshold=thresh)
         generation_time = time.time() - start_time
 
     elif args.method == 'PiracyResistant':
@@ -168,22 +148,6 @@ try:
         wm_method.gen_watermarks(dataset, device)
         generation_time = time.time() - start_time
 
-    elif args.method == 'Blackmarks':
-        net = models.__dict__[args.arch](num_classes=args.num_classes)
-        net.load_state_dict(torch.load(os.path.join('checkpoint', args.loadmodel + '.t7')))
-        net.to(device)
-
-        criterion = nn.CrossEntropyLoss()
-
-        _, transform = get_data_transforms(args.dataset)
-        data_db = os.path.join(os.getcwd(), 'data')
-        dataset, _, _ = get_dataset(args.dataset, data_db, data_db, transform, transform)
-        loader = torch.utils.data.DataLoader(dataset, batch_size=args.wm_batch_size, shuffle=False, drop_last=True)
-
-        start_time = time.time()
-        wm_method.gen_watermarks(dataset, loader, net, criterion, device, eps=args.eps)
-        generation_time = time.time() - start_time
-
     csv_args = [args.method, args.wm_type, args.dataset, args.arch, generation_time]
 
     with open(args.save_file, 'a') as file:
@@ -192,7 +156,5 @@ try:
 
 except Exception as e:
     msg = 'An error occured during watermark generation in ' + args.runname + ': ' + str(e)
-
-    send_email(msg)
 
     traceback.print_tb(e.__traceback__)
