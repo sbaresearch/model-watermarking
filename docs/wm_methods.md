@@ -1,0 +1,16 @@
+# WM approaches and their implementation 
+
+In the table below, all implemented watermarking methods are listed together with links to the corresponding papers. 
+
+Note that for the ProtectingIP, there 3 types of watermarking approaches.
+
+
+| Argument --method    | Py-file                                | Access paper                                                                                                                                                              | Comments                                                                                                                                            |
+|----------------------|----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
+| ExponentialWeighting | ./watermarks/exponential_weighting.py  | [Robust Watermarking of Neural Network with Exponential Weighting](https://www.doi.org/10.1145/3321705.3329808)                                                          | In-distribution trigger images, with exponentially weighting layers, needs a pre-trained model                                                      |
+| FrontierStitching    | ./watermarks/frontier_stitching.py     | [Adversarial Frontier Stitching for Remote Neural Network Watermarking](https://www.doi.org/10.1007/s00521-019-04434-z)                                                  | Perturbation-based trigger images, needs a pre-trained model for generating adversarial images                                                      |
+| PiracyResistant      | ./watermarks/piracy_resistant.py       | [Piracy Resistant Watermarks for Deep Neural Networks](http://arxiv.org/abs/1910.01226)                                                                                  | Pattern-based trigger images                                                                                                                        |
+| ProtectingIP         | ./watermarks/protecting_ip.py          | [Protecting Intellectual Property of Deep Neural Networks with Watermarking](https://www.doi.org/10.1145/3196494.3196550)                                                | This paper implements 3 types, which are defined through the --wm_type argument. Choices: 'content' (pattern based), 'unrelated' (OOD), 'noise'     |
+| WeaknessIntoStrength | ./watermarks/weakness_into_strength.py | [Turning Your Weakness Into a Strength: Watermarking Deep Neural Networks by Backdooring](https://www.usenix.org/system/files/conference/usenixsecurity18/sec18-adi.pdf) | OOD trigger images, the trigger images are provided by the authors and stored in ./data/trigger_set/weakness_into_strength/, unfortunately only 100 |
+| WMEmbeddedSystems    | ./watermarks/wm_embedded_systems.py    | [Watermarking deep neural networks for embedded systems](https://www.doi.org/10.1145/3240765.3240862)                                                                    | Pattern-based trigger images                                                                                                                        |
+
