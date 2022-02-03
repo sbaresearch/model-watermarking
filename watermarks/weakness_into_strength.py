@@ -37,7 +37,7 @@ class WeaknessIntoStrength(WmMethod):
 
         if self.embed_type == 'pretrained':
             # load model
-            net.load_state_dict(torch.load(os.path.join('checkpoint', self.loadmodel + '.t7')))
+            net.load_state_dict(torch.load(os.path.join('checkpoint', self.loadmodel + '.pth')))
 
         real_acc, wm_acc, val_loss, epoch, self.history = train_on_augmented(self.epochs_w_wm, device, net, optimizer, criterion,
                                                                scheduler, self.patience, train_loader, test_loader,

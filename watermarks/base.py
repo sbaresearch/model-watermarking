@@ -43,7 +43,7 @@ class WmMethod(ABC):
         logging.info("Verifying watermark.")
 
         logging.info("Loading saved model.")
-        net.load_state_dict(torch.load(os.path.join('checkpoint', self.save_model + '.t7')))
+        net.load_state_dict(torch.load(os.path.join('checkpoint', self.save_model + '.pth')))
 
         false_preds = 0
         length = 0

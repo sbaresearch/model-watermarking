@@ -108,7 +108,7 @@ class ExponentialWeighting(WmMethod):
             train_wo_wms(self.epochs_wo_wm, net, criterion, optimizer, scheduler, self.patience, train_loader,
                          test_loader, valid_loader, device, save_dir, self.save_model)
         elif self.embed_type == 'pretrained':
-            net.load_state_dict(torch.load(os.path.join('checkpoint', self.loadmodel + '.t7')))
+            net.load_state_dict(torch.load(os.path.join('checkpoint', self.loadmodel + '.pth')))
 
         # 3. activate exponential layers and train on training data augmented wtih trigger set
         t = 2.0  # from original implementation

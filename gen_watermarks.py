@@ -124,7 +124,7 @@ try:
 
     elif args.method == 'FrontierStitching':
         net = models.__dict__[args.arch](num_classes=args.num_classes)
-        net.load_state_dict(torch.load(os.path.join('checkpoint', args.loadmodel + '.t7')))
+        net.load_state_dict(torch.load(os.path.join('checkpoint', args.loadmodel + '.pth')))
         net.to(device)
 
         criterion = nn.CrossEntropyLoss()

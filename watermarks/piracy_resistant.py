@@ -165,7 +165,7 @@ class PiracyResistant(WmMethod):
         # In implementation: verified when min(acc_null, acc_true) > 0.8
 
         logging.info("Loading saved model.")
-        net.load_state_dict(torch.load(os.path.join('checkpoint', self.save_model + '.t7')))
+        net.load_state_dict(torch.load(os.path.join('checkpoint', self.save_model + '.pth')))
 
         logging.info("Verifying watermark.")
 

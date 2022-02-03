@@ -58,7 +58,7 @@ class FrontierStitching(WmMethod):
         logging.info("Embedding watermarks.")
 
         # load model
-        net.load_state_dict(torch.load(os.path.join('checkpoint', self.loadmodel + '.t7')))
+        net.load_state_dict(torch.load(os.path.join('checkpoint', self.loadmodel + '.pth')))
 
         # generating watermarks
         logging.info("Generating watermarks.")

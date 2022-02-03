@@ -60,9 +60,9 @@ cwd = os.getcwd()
 net = models.__dict__[args.arch](num_classes=args.num_classes)
 
 if device == 'cpu':
-    net.load_state_dict(torch.load(os.path.join(cwd, 'checkpoint', args.loadmodel + '.t7'), map_location=torch.device('cpu')))
+    net.load_state_dict(torch.load(os.path.join(cwd, 'checkpoint', args.loadmodel + '.pth'), map_location=torch.device('cpu')))
 else:
-    net.load_state_dict(torch.load(os.path.join(cwd, 'checkpoint', args.loadmodel + '.t7')))
+    net.load_state_dict(torch.load(os.path.join(cwd, 'checkpoint', args.loadmodel + '.pth')))
 
 net = net.to(device)
 
@@ -102,7 +102,7 @@ if args.attack_type == 'pruning':
 
     for pruning_rate in args.pruning_rates:
         # reload original model
-        net.load_state_dict(torch.load(os.path.join(cwd, 'checkpoint', args.loadmodel + '.t7')))
+        net.load_state_dict(torch.load(os.path.join(cwd, 'checkpoint', args.loadmodel + '.pth')))
 
         pruning_rate = float(pruning_rate)
         start_time = time.time()
@@ -122,7 +122,7 @@ if args.attack_type == 'pruning':
         save_results(csv_args, os.path.join(cwd, args.save_file))
         if args.save_model:
             logging.info('Saving attacked model.')
-            torch.save(net.state_dict(), os.path.join(cwd, 'checkpoint', info + '_' + str(pruning_rate) + '.t7'))
+            torch.save(net.state_dict(), os.path.join(cwd, 'checkpoint', info + '_' + str(pruning_rate) + '.pth'))
 
 elif args.attack_type == 'fine-tuning':
 
@@ -134,7 +134,7 @@ elif args.attack_type == 'fine-tuning':
                                                                                   args.dataset, args.batch_size,
                                                                                   args.num_epochs, args.patience,
                                                                                   os.path.join(cwd, 'checkpoint',
-                                                                                               info + '.t7'), wm_loader,
+                                                                                               info + '.pth'), wm_loader,
                                                                                   tune_all=args.tunealllayers)
     attack_time = time.time() - start_time
 

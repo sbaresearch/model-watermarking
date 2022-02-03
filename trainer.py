@@ -149,7 +149,7 @@ def train_wo_wms(epochs, net, criterion, optimizer, scheduler, patience, train_l
 
     # initialize the early_stopping object
     early_stopping = EarlyStopping(patience=int(patience), verbose=True,
-                                   path=os.path.join(save_dir, save_model + '.t7'),
+                                   path=os.path.join(save_dir, save_model + '.pth'),
                                    trace_func=logging.info)
 
     for epoch in range(epochs):
@@ -188,7 +188,7 @@ def train_wo_wms(epochs, net, criterion, optimizer, scheduler, patience, train_l
     history['valid_acc'] = valid_acc
 
     # torch.save(torch.tensor([avg_train_losses, avg_valid_losses, test_acc_list]),
-    #            os.path.join('results', save_model + '.t7'))
+    #            os.path.join('results', save_model + '.pth'))
 
     return best_test_acc, early_stopping.val_loss_min, best_epoch, history
 
@@ -225,12 +225,12 @@ def train_on_wms(epochs, device, net, optimizer, criterion, scheduler, wm_loader
         if (epoch + 1) % 5 == 0:
             durtr_dir = os.path.join(save_dir, save_model + '_duringtraining')
             os.makedirs(durtr_dir, exist_ok=True)
-            torch.save(net.state_dict(), os.path.join(durtr_dir, save_model + 'epoch_' + str(epoch + 1) + '.t7'))
+            torch.save(net.state_dict(), os.path.join(durtr_dir, save_model + 'epoch_' + str(epoch + 1) + '.pth'))
 
         scheduler.step()
 
     logging.info("Saving model.")
-    torch.save(net.state_dict(), os.path.join(save_dir, save_model + '.t7'))
+    torch.save(net.state_dict(), os.path.join(save_dir, save_model + '.pth'))
 
     # history = {'train_losses': avg_train_losses,
     #            'valid_losses': avg_valid_losses,
@@ -246,7 +246,7 @@ def train_on_wms(epochs, device, net, optimizer, criterion, scheduler, wm_loader
 
     # save_obj(history, save_model)
     # torch.save(torch.tensor([avg_train_losses, avg_valid_losses, test_acc_list, wm_acc_list]),
-    #            os.path.join('results', save_model + '.t7'))
+    #            os.path.join('results', save_model + '.pth'))
 
     return test_acc, wm_acc, None, epoch, history
 
@@ -264,7 +264,7 @@ def train_on_augmented(epochs, device, net, optimizer, criterion, scheduler, pat
     best_test_acc, best_wm_acc, best_epoch = 0, 0, 0
 
     early_stopping = EarlyStopping(patience=int(patience), verbose=True,
-                                   path=os.path.join(save_dir, save_model + '.t7'),
+                                   path=os.path.join(save_dir, save_model + '.pth'),
                                    trace_func=logging.info)
 
     for epoch in range(epochs):
@@ -294,7 +294,7 @@ def train_on_augmented(epochs, device, net, optimizer, criterion, scheduler, pat
         if (epoch + 1) % 5 == 0:
             durtr_dir = os.path.join(save_dir, save_model + '_duringtraining')
             os.makedirs(durtr_dir, exist_ok=True)
-            torch.save(net.state_dict(), os.path.join(durtr_dir, save_model + 'epoch_' + str(epoch + 1) + '.t7'))
+            torch.save(net.state_dict(), os.path.join(durtr_dir, save_model + 'epoch_' + str(epoch + 1) + '.pth'))
 
         # early_stopping needs the validation loss to check if it has decreased,
         # and if it has, it will make a checkpoint of the current model
@@ -318,6 +318,6 @@ def train_on_augmented(epochs, device, net, optimizer, criterion, scheduler, pat
     # save_obj(history, save_model)
 
     # torch.save(torch.tensor([avg_train_losses, avg_valid_losses, test_acc_list, wm_acc_list]),
-    #           os.path.join('results', save_model + '.t7'))
+    #           os.path.join('results', save_model + '.pth'))
 
     return best_test_acc, best_wm_acc, early_stopping.val_loss_min, best_epoch, history
