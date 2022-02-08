@@ -26,10 +26,11 @@ parser = argparse.ArgumentParser(description='Train models without watermarks.')
 # model and dataset
 parser.add_argument('--dataset', default='cifar10', help='the dataset to train on [cifar10]')
 parser.add_argument('--num_classes', default=10, type=int, help='number of classes for classification')
-parser.add_argument('--arch', metavar='ARCH', default='simplenet', choices=model_names,
-                    help='model architecture: ' + ' | '.join(model_names) + ' (default: simplenet)')
+parser.add_argument('--arch', metavar='ARCH', default='cnn_cifar10', choices=model_names,
+                    help='model architecture: ' + ' | '.join(model_names) + ' (default: cnn_cifar10)')
 
 # hyperparameters
+parser.add_argument('--runname', default='cifar10_custom_cnn', help='the exp name')
 parser.add_argument('--epochs_wo_wm', default=2, type=int, help='number of epochs trained without watermarks')
 parser.add_argument('--batch_size', default=64, type=int, help='the batch size')
 parser.add_argument('--lr', default=0.1, type=float, help='learning rate')

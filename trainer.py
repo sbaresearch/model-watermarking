@@ -202,6 +202,9 @@ def train_on_wms(epochs, device, net, optimizer, criterion, scheduler, wm_loader
     test_acc_list = []
     wm_acc_list = []
 
+    durtr_dir = os.path.join(save_dir, save_model + '_duringtraining')
+    os.makedirs(durtr_dir, exist_ok=True)
+
     for epoch in range(epochs):
 
         # no valid_loader for wm_loader
@@ -223,8 +226,6 @@ def train_on_wms(epochs, device, net, optimizer, criterion, scheduler, wm_loader
 
         # save model every 5 epochs # could be variable
         if (epoch + 1) % 5 == 0:
-            durtr_dir = os.path.join(save_dir, save_model + '_duringtraining')
-            os.makedirs(durtr_dir, exist_ok=True)
             torch.save(net.state_dict(), os.path.join(durtr_dir, save_model + 'epoch_' + str(epoch + 1) + '.pth'))
 
         scheduler.step()
@@ -267,6 +268,9 @@ def train_on_augmented(epochs, device, net, optimizer, criterion, scheduler, pat
                                    path=os.path.join(save_dir, save_model + '.pth'),
                                    trace_func=logging.info)
 
+    durtr_dir = os.path.join(save_dir, save_model + '_duringtraining')
+    os.makedirs(durtr_dir, exist_ok=True)
+
     for epoch in range(epochs):
         avg_train_losses, avg_valid_losses, train_acc, valid_acc = train(epoch, net, criterion, optimizer,
                                                                          train_loader, device,
@@ -292,8 +296,6 @@ def train_on_augmented(epochs, device, net, optimizer, criterion, scheduler, pat
 
         # save model every 5 epochs # could be variable
         if (epoch + 1) % 5 == 0:
-            durtr_dir = os.path.join(save_dir, save_model + '_duringtraining')
-            os.makedirs(durtr_dir, exist_ok=True)
             torch.save(net.state_dict(), os.path.join(durtr_dir, save_model + 'epoch_' + str(epoch + 1) + '.pth'))
 
         # early_stopping needs the validation loss to check if it has decreased,
