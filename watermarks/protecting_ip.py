@@ -15,7 +15,7 @@ import torchvision.transforms as transforms
 
 from helpers.utils import image_char, save_triggerset, get_size, find_tolerance, get_trg_set
 from helpers.loaders import get_data_transforms, get_wm_transform
-from helpers.transforms import EmbedText
+from helpers.transforms import EmbedText, EmbedPattern
 
 from trainer import test, train, train_on_augmented
 
@@ -24,10 +24,14 @@ class ProtectingIP(WmMethod):
     def __init__(self, args):
         super().__init__(args)
 
-        self.path = os.path.join(os.getcwd(), 'data', 'trigger_set', 'protecting_ipp')
+        # when --backdoor argument is given train with backdoor-set instead of watermark-set
+        if args.backdoor is not None:
+            self.path = os.path.join(os.getcwd(), 'data', 'trigger_set', 'protecting_ip_backdoor')
+        else:
+            self.path = os.path.join(os.getcwd(), 'data', 'trigger_set', 'protecting_ip')
         os.makedirs(self.path, exist_ok=True)  # path where to save trigger set if has to be generated
 
-        self.wm_type = args.wm_type  # content, unrelated, noise
+        self.wm_type = args.wm_type  # content, unrelated, noise, pattern
         self.p = None
 
     def gen_watermarks(self, device):
@@ -44,7 +48,7 @@ class ProtectingIP(WmMethod):
                 transform_watermarked = transforms.Compose([
                     transforms.Resize(32),
                     transforms.ToTensor(),
-                    EmbedText("TEST", (0, 22), 0.5),
+                    EmbedText("TEST", (0, 22), 1),
                     transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)),
                 ])
             elif self.dataset == "mnist":
@@ -53,7 +57,6 @@ class ProtectingIP(WmMethod):
                     transforms.ToTensor(),
                     EmbedText("TEST", (0, 18), 0.5),
                 ])
-
 
         elif self.wm_type == 'unrelated':
             if self.dataset == 'mnist':
@@ -94,6 +97,26 @@ class ProtectingIP(WmMethod):
                     transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010))
                 ])
 
+        elif self.wm_type == 'pattern':
+            wm_dataset = self.dataset
+            # add gaussian noise to trg images
+            transform_train, _ = get_data_transforms(self.dataset)
+
+            if self.dataset == 'mnist':
+                transform_watermarked = transforms.Compose([
+                    transforms.Resize(28),
+                    transforms.ToTensor(),
+                    EmbedPattern()
+                ])
+
+            elif self.dataset == 'cifar10':
+                transform_watermarked = transforms.Compose([
+                    transforms.Resize(32),
+                    transforms.ToTensor(),
+                    # transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)),
+                    EmbedPattern('rgb'),
+                ])
+
         wm_set = datasets_dict[wm_dataset](root='./data', train=True, download=True, transform=transform_watermarked)
 
         for i in random.sample(range(len(wm_set)), len(wm_set)):  # iterate randomly
@@ -113,7 +136,7 @@ class ProtectingIP(WmMethod):
               device, save_dir):
 
         # self.gen_watermarks(device) # old
-        transform = get_wm_transform('ProtectingIPP', self.dataset)
+        transform = get_wm_transform('ProtectingIP', self.dataset)
 
         self.trigger_set = get_trg_set(os.path.join(self.path, self.wm_type, self.dataset), 'labels.txt', self.size,
                                        transform=transform)
