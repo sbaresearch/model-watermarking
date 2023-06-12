@@ -38,7 +38,7 @@ parser.add_argument('--arch', metavar='ARCH', default='cnn_cifar10', choices=mod
 parser.add_argument('--method', default=None, choices=watermarking_methods,
                     help='watermarking method: ' + ' | '.join(
                         watermarking_methods) + ' (default: weakness_into_strength)')
-parser.add_argument('--wm_type', default=None, help='wm type for ProtectingIPP: content, unrelated, noise')
+parser.add_argument('--wm_type', default=None, help='wm type for ProtectingIPP: content, unrelated, noise, pattern')
 parser.add_argument('--save_wm', action='store_true', help='save generated watermarks?')
 parser.add_argument('--runname', default='train', help='the exp name')
 parser.add_argument('--trg_set_size', default=100, type=int, help='the size of the trigger set (default: 100)')
@@ -49,6 +49,8 @@ parser.add_argument('--loadmodel', default='', help='path which model should be 
 parser.add_argument('--eps', default=0.1, help='epsilon for FrontierStitching or WMEmbeddedSystems')
 parser.add_argument('--lmbda', default=100, help='lambda for PiracyResistant')
 parser.add_argument('--pattern_size', default=6, help='patternsize for PiracyResistant and WMEMbeddedSystems')
+
+parser.add_argument('--backdoor', default=None, help='specify wether watermark or backdoor trigger-set should be used')
 
 # hyperparameters
 parser.add_argument('--epochs_w_wm', default=0, type=int, help='number of epochs trained with watermarks')
