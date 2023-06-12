@@ -40,7 +40,9 @@ parser.add_argument('--sched', default='MultiStepLR', help='scheduler (default M
 parser.add_argument('--trg_set_size', default=100, type=int, help='the size of the trigger set (default: 100)')
 parser.add_argument('--loadmodel', default=None, help='the model which the attack should be performed on')
 parser.add_argument('--save_file', default="save_results_attacks.csv", help='file for saving results')
-parser.add_argument('--wm_type', help='e.g. content, noise, unrelated')
+parser.add_argument('--wm_type', help='e.g. content, noise, unrelated, pattern')
+parser.add_argument('--model_type', default='clean', help='e.g. clean, backdoor, watermarked')
+parser.add_argument('--backdoor', default=None, help='specify wether watermark or backdoor trigger-set should be used')
 parser.add_argument('--method', help='watermarking method')
 parser.add_argument('--eps', help='eps for watermarking method')
 parser.add_argument('--pattern_size', default=128, help='pattern size or num bits')
@@ -94,7 +96,14 @@ _, test_loader, _ = get_dataloader(train_set, test_set, args.batch_size, valid_s
 
 # prepare wm loader
 transform = get_wm_transform(args.method, args.dataset)
-wm_path = get_wm_path(args.method, args.dataset, wm_type=args.wm_type, model=args.arch, eps=args.eps, pattern_size=args.pattern_size)
+if args.backdoor is not None:
+    wm_path = get_wm_path(args.method, args.dataset, wm_type=args.wm_type,
+                          model=args.arch, eps=args.eps, pattern_size=args.pattern_size, backdoor=True)
+else:
+    wm_path = get_wm_path(args.method, args.dataset, wm_type=args.wm_type,
+                          model=args.arch, eps=args.eps, pattern_size=args.pattern_size)
+
+logging.info('wm path: ' + wm_path)
 trigger_set = get_trg_set(wm_path, 'labels.txt', args.trg_set_size, transform)
 wm_loader = torch.utils.data.DataLoader(trigger_set, batch_size=args.wm_batch_size, shuffle=False)
 
