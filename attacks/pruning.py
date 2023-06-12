@@ -93,6 +93,14 @@ def get_params_to_prune(arch, net):
 
     elif arch == "lenet5":
         return [
+            (net.conv_layer[0], 'weight'),
+            (net.conv_layer[3], 'weight'),
+            (net.fc_layer[0], 'weight'),
+            (net.fc_layer[2], 'weight'),
+        ]
+
+    elif arch == "lenet5_old":
+        return [
             (net.conv1, 'weight'),
             (net.conv2, 'weight'),
             (net.fc1, 'weight'),
@@ -694,6 +702,14 @@ def get_modules(arch, net):
         ]
 
     elif arch == "lenet5":
+        return [
+            net.conv_layer[0],
+            net.conv_layer[3],
+            net.fc_layer[0],
+            net.fc_layer[2],
+        ]
+
+    elif arch == "lenet5_old":
         return [
             net.conv1,
             net.conv2,
