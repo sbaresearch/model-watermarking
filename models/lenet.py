@@ -116,9 +116,75 @@ class LeNet3(nn.Module):
             if isinstance(name, EWConv2d) or isinstance(name, EWLinear):
                 name.disable()
 
+
 class LeNet5(nn.Module):
     def __init__(self, num_classes=10):
         super(LeNet5, self).__init__()
+        self.conv_layer = nn.Sequential(
+            EWConv2d(1, 6, kernel_size=5, stride=1, padding=2),
+            nn.MaxPool2d(kernel_size=2, stride=2),
+            nn.ReLU(inplace=True),
+
+            EWConv2d(6, 16, kernel_size=5, stride=1, padding=2),
+            nn.MaxPool2d(kernel_size=2, stride=2),
+            nn.ReLU(inplace=True),
+        )
+
+        self.fc_layer = nn.Sequential(
+            EWLinear(784, 120),
+            nn.ReLU(inplace=True),
+            EWLinear(120, 84),
+            nn.ReLU(inplace=True),
+            EWLinear(84, num_classes)
+        )
+
+    def forward(self, x):
+        # conv layers
+        x = self.conv_layer(x)
+
+        # flatten
+        x = x.view(x.size(0), -1)  # first dimension batch size
+
+        # fc layer
+        x = self.fc_layer(x)
+
+        return F.log_softmax(x, dim=1)
+
+    def freeze_hidden_layers(self):
+        self._freeze_layer(self.conv_layer[0])
+        self._freeze_layer(self.conv_layer[3])
+
+    def unfreeze_model(self):
+        self._freeze_layer(self.conv_layer[0], freeze=False)
+        self._freeze_layer(self.conv_layer[3], freeze=False)
+        self._freeze_layer(self.fc_layer[0], freeze=False)
+        self._freeze_layer(self.fc_layer[2], freeze=False)
+        self._freeze_layer(self.fc_layer[4], freeze=False)
+
+    def _freeze_layer(self, layer, freeze=True):
+        if freeze:
+            for p in layer.parameters():
+                p.requires_grad = False
+        else:
+            for p in layer.parameters():
+                p.requires_grad = True
+
+    # for exponential weighting
+    def enable_ew(self, t):
+        for name, param in self.named_parameters():
+            if isinstance(name, EWConv2d) or isinstance(name, EWLinear):
+                name.enable(t)
+
+    def disable_ew(self):
+        for name, param in self.named_parameters():
+            if isinstance(name, EWConv2d) or isinstance(name, EWLinear):
+                name.disable()
+
+
+
+class LeNet5_old(nn.Module):
+    def __init__(self, num_classes=10):
+        super(LeNet5_old, self).__init__()
         self.conv1 = EWConv2d(1, 6, kernel_size=5, stride=1, padding=2)
         # self.conv1 = EWConv2d(1, 6, kernel_size=5, stride=1, padding=0)
         self.conv2 = EWConv2d(6, 16, kernel_size=5, stride=1, padding=2)
