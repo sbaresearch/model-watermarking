@@ -1,6 +1,7 @@
 import os
 import os.path
 
+import natsort as natsort
 import torch.utils.data as data
 from PIL import Image
 
@@ -33,8 +34,8 @@ def make_dataset(dir, class_to_idx):
         if not os.path.isdir(d):
             continue
 
-        for root, _, fnames in sorted(os.walk(d)):
-            for fname in sorted(fnames):
+        for root, _, fnames in os.walk(d):
+            for fname in natsort.natsorted(fnames):
                 if is_image_file(fname):
                     path = os.path.join(root, fname)
                     item = (path, class_to_idx[target])
