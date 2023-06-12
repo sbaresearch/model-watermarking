@@ -91,7 +91,7 @@ def get_wm_transform(method, dataset):
                 transforms.ToTensor()
             ])
 
-    elif method == 'ProtectingIPP':
+    elif method == 'ProtectingIP':
         if dataset == 'mnist':
             transform = transforms.Compose([transforms.Grayscale(num_output_channels=1),
                                             transforms.ToTensor(),
@@ -204,9 +204,12 @@ def get_dataloader(train_set, test_set, batch_size, valid_set=None, shuffle=True
     return train_loader, test_loader, valid_loader
 
 
-def get_wm_path(method, dataset, wm_type=None, model=None, eps=None, pattern_size=None):
-    if method == 'ProtectingIPP':
-        return os.path.join('data', 'trigger_set', 'protecting_ipp', wm_type, dataset)
+def get_wm_path(method, dataset, wm_type=None, model=None, eps=None, pattern_size=None, backdoor=False):
+    if method == 'ProtectingIP':
+        if backdoor:
+            return os.path.join('data', 'trigger_set', 'protecting_ip_backdoor', wm_type, dataset)
+        else:
+            return os.path.join('data', 'trigger_set', 'protecting_ipp', wm_type, dataset)
 
     elif method == 'FrontierStitching':
         return os.path.join('data', 'trigger_set', 'frontier_stitching', model, str(float(eps)), dataset)
