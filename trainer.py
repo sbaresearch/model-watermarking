@@ -5,10 +5,15 @@ import logging
 
 import torch
 import numpy as np
+from matplotlib import pyplot as plt
 
 from helpers.utils import progress_bar, make_loss_plot, save_obj
 
 from helpers.pytorchtools import EarlyStopping
+
+from sklearn.metrics import confusion_matrix
+import seaborn as sn
+import pandas as pd
 
 
 def train(epoch, net, criterion, optimizer, train_loader, device, avg_train_losses, avg_valid_losses,
@@ -115,11 +120,28 @@ def train(epoch, net, criterion, optimizer, train_loader, device, avg_train_loss
     return avg_train_losses, avg_valid_losses, train_acc, valid_acc
 
 
+def show_confusion_matrix(predictions, true_labels):
+
+    classes = ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
+    possible_labels = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+    cf_matrix = confusion_matrix(predictions, true_labels, labels=np.unique(possible_labels))
+
+    df_cm = pd.DataFrame(cf_matrix, index=[i for i in classes],
+                         columns=[i for i in classes])
+    plt.figure(figsize=(12, 7))
+    sn.heatmap(df_cm, annot=True)
+    plt.ylabel("predicted class")
+    plt.xlabel("true class")
+    plt.show()
+
 def test(net, criterion, loader, device):
     net.eval()
     test_loss = 0
     correct = 0
     total = 0
+    predictions = []
+    true_labels = []
     with torch.no_grad():
         for batch_idx, (inputs, targets) in enumerate(loader):
             inputs, targets = inputs.to(device), targets.to(device)
@@ -128,12 +150,17 @@ def test(net, criterion, loader, device):
 
             test_loss += loss.item()
             _, predicted = torch.max(outputs.data, 1)
+
+            predictions.extend(predicted.numpy())
+            true_labels.extend(targets.numpy())
+
             total += targets.size(0)
             correct += predicted.eq(targets.data).cpu().sum()
 
     logging.info('Test results: Loss: %.3f | Acc: %.3f%% (%d/%d)'
                  % (test_loss / (batch_idx + 1), 100. * correct / total, correct, total))
 
+    # show_confusion_matrix(predictions, true_labels)
     return 100. * correct / total
 
 
