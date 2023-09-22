@@ -209,7 +209,7 @@ def get_wm_path(method, dataset, wm_type=None, model=None, eps=None, pattern_siz
         if backdoor:
             return os.path.join('data', 'trigger_set', 'protecting_ip_backdoor', wm_type, dataset)
         else:
-            return os.path.join('data', 'trigger_set', 'protecting_ipp', wm_type, dataset)
+            return os.path.join('data', 'trigger_set', 'protecting_ip', wm_type, dataset)
 
     elif method == 'FrontierStitching':
         return os.path.join('data', 'trigger_set', 'frontier_stitching', model, str(float(eps)), dataset)
