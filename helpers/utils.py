@@ -224,7 +224,7 @@ def save_triggerset(trigger_set, path, dataset, wm_type=None):
         os.remove(labels)
 
     for idx, (img, lbl) in enumerate(trigger_set):
-        save_image(img, os.path.join(images, str(idx+1) + '.jpg'))
+        save_image(img, os.path.join(images, str(idx+1) + '.png'), format="PNG")
         with open(labels, 'a') as f:
             if torch.is_tensor(lbl):
                 f.write(str(lbl.item()) + '\n')
@@ -361,7 +361,7 @@ def get_trg_set(path, labels, size, transform=None):
 
 def save_results(csv_args, csv_file):
     logging.info("Saving results.")
-    with open(csv_file, 'a') as csvfile:
+    with open(csv_file, 'a', newline='') as csvfile:
         writer = csv.writer(csvfile, delimiter=';')
         writer.writerow(csv_args)
 
