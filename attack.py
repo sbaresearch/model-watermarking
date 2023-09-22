@@ -111,7 +111,11 @@ if args.attack_type == 'pruning':
 
     for pruning_rate in args.pruning_rates:
         # reload original model
-        net.load_state_dict(torch.load(os.path.join(cwd, 'checkpoint', args.loadmodel + '.pth')))
+        if device == 'cpu':
+            net.load_state_dict(
+                torch.load(os.path.join(cwd, 'checkpoint', args.loadmodel + '.pth'), map_location=torch.device('cpu')))
+        else:
+            net.load_state_dict(torch.load(os.path.join(cwd, 'checkpoint', args.loadmodel + '.pth')))
 
         pruning_rate = float(pruning_rate)
         start_time = time.time()
